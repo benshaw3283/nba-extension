@@ -1,9 +1,9 @@
 {
-  "name": "Next.js Browser Extension Demo",
+  "name": "NBA Daily",
   "version": "1.0.0",
   "manifest_version": 3,
   "action": {
-    "default_title": "Next.js Browser Extension Demo",
+    "default_title": "NBA Daily",
     "default_popup": "index.html"
   }
 }
