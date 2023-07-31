@@ -1,12 +1,15 @@
 import type { NextPage } from "next";
+import Games from "../components/Games";
 
 const Home: NextPage = () => {
   return (
     <main>
-      <section>
-        <h1>Hello!</h1>
-        <p>This is a Next.js application. 😎</p>
-      </section>
+      
+      <div id='delete_for_actual' className="w-screen h-screen flex justify-center pt-2">
+        <div className="border-2 h-20 w-[500px] flex ">
+          <Games />
+        </div>
+      </div>
     </main>
   );
 };
