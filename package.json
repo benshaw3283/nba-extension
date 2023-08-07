@@ -12,7 +12,7 @@
     "format:macos": "mv ./out/_next ./out/next && cd ./out && grep -rli '_next' * | xargs -I@ sed -i '' 's|/_next|/next|g' @;"
   },
   "dependencies": {
-    "@tanstack/react-query": "^4.32.0",
+    "@tanstack/react-query": "^4.32.1",
     "next": "^13.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

@@ -6,7 +6,7 @@ const Home: NextPage = () => {
     <main>
       
       <div id='delete_for_actual' className="w-screen h-screen flex justify-center pt-2">
-        <div className="border-2 h-20 w-[500px] flex ">
+        <div className="border-2 h-[800px] w-[500px] flex overflow-y-scroll overflow-x-hidden">
           <Games />
         </div>
       </div>
