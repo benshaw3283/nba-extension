@@ -57,13 +57,13 @@ const shortenNames = (name: string): string => {
 const Games: React.FC = () => {
   const { isLoading, error, data } = useQuery<{ response: Game[] }>({
     queryKey: ["gamesData"],
-    queryFn:  fetchGames,
+    queryFn: fetchGames,
   });
 
   return (
     <div className="">
       {data ? (
-        data.response.map((game:any, index:number) => (
+        data.response.map((game: any, index: number) => (
           <div key={index}>
             <div className=" w-[500px] ">
               <div className="flex flex-col py-2 pr-2">
@@ -95,22 +95,20 @@ const Games: React.FC = () => {
                   <div className="order-2 flex flex-col items-center font-semibold ">
                     <div className="order-1">
                       <h2>
-                        {game.status?.halftime
-                          ? "Halftime"
-                          : game.status?.long}
+                        {game.status?.halftime ? "Halftime" : game.status?.long}
                       </h2>
                       <p>
                         Q{game.periods?.current} - {game.status?.clock}
                       </p>
                     </div>
 
-                    <div className="order-3 flex pt-10 flex-col">
-                      <div className="order-1">
-                      <h3 className="flex text-sm">Top Players</h3>
+                    <div className="order-3 flex pt-6  flex-col">
+                      <div className="order-1 flex justify-center">
+                        <h3 className="flex text-sm">Top Players</h3>
                       </div>
-                      <div className="flex order-2">
-                          <TopPlayers gameID={game.id}/>
-                          </div>
+                      <div className="flex order-2 ">
+                        <TopPlayers gameID={game.id} />
+                      </div>
                     </div>
                   </div>
 
