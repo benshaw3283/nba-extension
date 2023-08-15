@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import PlayerStats from "./PlayerStatsByGame";
 import TopPlayers from "./PlayerStatsByGame";
+import { gamesArray } from "./arrays";
 
 interface Team {
   logo: string;
@@ -38,14 +39,19 @@ const options: RequestInit = {
   },
 };
 
+{
+  /*
 const fetchGames = async (): Promise<{ response: Game[] }> => {
   const response = await fetch(
     `https://api-nba-v1.p.rapidapi.com/games?date=2023-03-02`,
     options
   );
   const result = await response.json();
+  console.log(result)
   return result;
 };
+*/
+}
 
 const shortenNames = (name: string): string => {
   if (name === "Cavaliers") name = "Cavs";
@@ -55,15 +61,22 @@ const shortenNames = (name: string): string => {
 };
 
 const Games: React.FC = () => {
-  const { isLoading, error, data } = useQuery<{ response: Game[] }>({
+  {
+    /*  const { isLoading, error, data } = useQuery<{ response: Game[] }>({
     queryKey: ["gamesData"],
     queryFn: fetchGames,
   });
+  */
+  }
+  const data = true;
 
+  {
+    /*  data.response.map */
+  }
   return (
     <div className="">
       {data ? (
-        data.response.map((game: any, index: number) => (
+        gamesArray.map((game: any, index: number) => (
           <div key={index}>
             <div className=" w-[500px] ">
               <div className="flex flex-col py-2 pr-2">
@@ -144,8 +157,10 @@ const Games: React.FC = () => {
         <span>No games on today!</span>
       )}
 
+      {/*
       <div>{isLoading ? <span>Loading...</span> : <div> </div>}</div>
       <div>{error ? <span>Error...</span> : <div> </div>}</div>
+      */}
     </div>
   );
 };

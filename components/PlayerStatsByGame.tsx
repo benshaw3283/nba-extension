@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import pic from "../images/brown.png";
+import { statsArray } from "./arrays";
 
 interface Player {
   player: {
@@ -53,7 +54,8 @@ const options: RequestInit = {
 const TopPlayers = (props: any) => {
   const url = `https://api-nba-v1.p.rapidapi.com/players/statistics?game=${props.gameID}`;
 
-  const fetchAllPlayers = async () => {
+  {
+    /* const fetchAllPlayers = async () => {
     const response = await fetch(url, options);
     const result = await response.json();
     return result.response;
@@ -64,10 +66,14 @@ const TopPlayers = (props: any) => {
     queryFn: fetchAllPlayers,
   });
 
+*/
+  }
+  const data = true;
+
   let topPlayers: Player[] = [];
 
   if (data) {
-    topPlayers = [...data];
+    topPlayers = [...statsArray];
     topPlayers.forEach((player) => {
       player.prasb =
         player.points +
@@ -101,37 +107,43 @@ const TopPlayers = (props: any) => {
 
   return (
     <div>
+      {/*
       {isLoading ? (
         <div>Loading...</div>
       ) : error ? (
         <div>Error...</div>
-      ) : topTwoPlayers.length >= 2 ? (
-        <div className="flex flex-row">
-          <div className="flex order-1">
-            <div className="">
-              <Image src={pic} alt="g" width={30} height={30} />
+      ) : */}{" "}
+      {data ? (
+        topTwoPlayers.length >= 2 ? (
+          <div className="flex flex-row">
+            <div className="flex order-1">
+              <div className="">
+                <Image src={pic} alt="g" width={30} height={30} />
+              </div>
+              <div className="flex flex-col">
+                <div className="order-1 flex">
+                  <p className="text-sm">
+                    {topTwoPlayers[0].player.firstname}
+                    {topTwoPlayers[0].player.lastname}
+                  </p>
+                </div>
+                <div className="order-2 flex"></div>
+              </div>
             </div>
-            <div className="flex flex-col">
-              <div className="order-1 flex">
+            <div className="flex order-2">
+              <div>
                 <p className="text-sm">
-                  {topTwoPlayers[0].player.firstname}
-                  {topTwoPlayers[0].player.lastname}
+                  {topTwoPlayers[1].player.firstname}
+                  {topTwoPlayers[1].player.lastname}
                 </p>
               </div>
-              <div className="order-2 flex"></div>
             </div>
           </div>
-          <div className="flex order-2">
-            <div>
-              <p className="text-sm">
-                {topTwoPlayers[1].player.firstname}
-                {topTwoPlayers[1].player.lastname}
-              </p>
-            </div>
-          </div>
-        </div>
+        ) : (
+          <div>No players...</div>
+        )
       ) : (
-        <div>No players...</div>
+        <div>ds</div>
       )}
     </div>
   );
