@@ -5,8 +5,8 @@ const Home: NextPage = () => {
   return (
     <main>
       
-      <div id='delete_for_actual' className="w-screen h-screen flex justify-center pt-2">
-        <div className="border-2 h-[800px] w-[500px] flex overflow-y-scroll overflow-x-hidden">
+      <div id='delete_for_actual' className="w-screen h-screen flex justify-center pt-2 bg-black">
+        <div className="border-2 h-[800px] w-[500px] flex  overflow-x-hidden ">
           <Games />
         </div>
       </div>

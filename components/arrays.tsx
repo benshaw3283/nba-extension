@@ -671,6 +671,7 @@ export const statsArray = [
     blocks: 0,
     plusMinus: "+4",
     comment: null,
+    
   },
   {
     player: {

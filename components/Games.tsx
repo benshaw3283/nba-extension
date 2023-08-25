@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PlayerStats from "./PlayerStatsByGame";
 import TopPlayers from "./PlayerStatsByGame";
-import { gamesArray } from "./arrays";
+import { gamesArray, statsArray } from "./arrays";
+import BoxScore from "./BoxScore";
 
 interface Team {
   logo: string;
@@ -61,6 +62,13 @@ const shortenNames = (name: string): string => {
 };
 
 const Games: React.FC = () => {
+  const [box, setBox] = useState(-1)
+
+const handleBox = (index:number) => {
+  setBox(index);
+  if (box === index) setBox(-1)
+}
+
   {
     /*  const { isLoading, error, data } = useQuery<{ response: Game[] }>({
     queryKey: ["gamesData"],
@@ -77,10 +85,10 @@ const Games: React.FC = () => {
     <div className="">
       {data ? (
         gamesArray.map((game: any, index: number) => (
-          <div key={index}>
+          <div key={index} className="relative">
             <div className=" w-[500px] ">
-              <div className="flex flex-col py-2 pr-2">
-                <div className="flex flex-row justify-between order-1 bg-blue-500 rounded-lg p-2 h-36 ">
+              <div className="flex flex-col py-1 pr-2  ">
+                <div className="flex flex-row justify-between order-1  rounded-lg p-2 h-40 bg-white overflow-y-clip">
                   <div className="flex flex-row order-1">
                     <div className="flex order-1 pt-2 pl-4 flex-col items-center ">
                       <div className="order-1">
@@ -115,13 +123,17 @@ const Games: React.FC = () => {
                       </p>
                     </div>
 
-                    <div className="order-3 flex pt-6  flex-col">
-                      <div className="order-1 flex justify-center">
-                        <h3 className="flex text-sm">Top Players</h3>
-                      </div>
-                      <div className="flex order-2 ">
+                    <div className=" absolute top-24  flex-col">
+                      <div className="flex order-1  border-slate-400">
                         <TopPlayers gameID={game.id} />
                       </div>
+                    </div>
+                    <div className="absolute bottom-8 left-1">
+                      <p className="text-xs font-mono font-extralight cursor-pointer text-gray-500"
+                      onClick={()=> handleBox(index)}
+                      >
+                        Box Score
+                      </p>
                     </div>
                   </div>
 
@@ -148,6 +160,9 @@ const Games: React.FC = () => {
                       {game.scores.visitors.points}
                     </p>
                   </div>
+                </div>
+                <div className="order-4">
+                  <BoxScore state={box} gameIndex={index} />
                 </div>
               </div>
             </div>

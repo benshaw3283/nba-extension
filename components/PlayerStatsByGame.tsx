@@ -117,25 +117,66 @@ const TopPlayers = (props: any) => {
         topTwoPlayers.length >= 2 ? (
           <div className="flex flex-row">
             <div className="flex order-1">
-              <div className="">
-                <Image src={pic} alt="g" width={30} height={30} />
+              <div className=" pt-2 ">
+                <Image
+                  src={pic}
+                  alt="g"
+                  width={40}
+                  height={35}
+                  className="rounded-full"
+                />
               </div>
               <div className="flex flex-col">
                 <div className="order-1 flex">
-                  <p className="text-sm">
-                    {topTwoPlayers[0].player.firstname}
+                  <p className="text-sm pr-4">
+                    {topTwoPlayers[0].player.firstname}{" "}
                     {topTwoPlayers[0].player.lastname}
                   </p>
                 </div>
-                <div className="order-2 flex"></div>
+
+                <div className="order-2 flex">
+                  <div className="flex flex-row ">
+                    <p className="order-1 text-xs pl-1">pts</p>
+                    <p className="order-2 text-xs pl-2">reb</p>
+                    <p className="order-3 text-xs pl-2">assists</p>
+                  </div>
+                </div>
+                <div className="order-3 flex text-sm">
+                  <p className="pl-2">{topTwoPlayers[0].points}</p>
+                  <p className="pl-5">{topTwoPlayers[0].totReb}</p>
+                  <p className="pl-5">{topTwoPlayers[0].assists}</p>
+                </div>
               </div>
             </div>
             <div className="flex order-2">
-              <div>
-                <p className="text-sm">
-                  {topTwoPlayers[1].player.firstname}
-                  {topTwoPlayers[1].player.lastname}
-                </p>
+              <div className="flex flex-col">
+                <div className="flex order-1">
+                  <p className="text-sm">
+                    {topTwoPlayers[1].player.firstname}{" "}
+                    {topTwoPlayers[1].player.lastname}
+                  </p>
+                </div>
+                <div className="order-2 flex">
+                  <div className="flex flex-row ">
+                    <p className="order-1 text-xs pl-3">assists</p>
+                    <p className="order-2 text-xs pl-2">reb</p>
+                    <p className="order-3 text-xs pl-3">pts</p>
+                  </div>
+                </div>
+                <div className="order-3 flex text-sm">
+                  <p className="pl-7">{topTwoPlayers[1].assists}</p>
+                  <p className="pl-7">{topTwoPlayers[1].totReb}</p>
+                  <p className="pl-5">{topTwoPlayers[1].points}</p>
+                </div>
+              </div>
+              <div className="pt-2 ">
+                <Image
+                  src={pic}
+                  alt="g"
+                  width={40}
+                  height={35}
+                  className="rounded-full"
+                />
               </div>
             </div>
           </div>
