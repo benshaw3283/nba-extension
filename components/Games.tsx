@@ -62,12 +62,12 @@ const shortenNames = (name: string): string => {
 };
 
 const Games: React.FC = () => {
-  const [box, setBox] = useState(-1)
+  const [box, setBox] = useState(-1);
 
-const handleBox = (index:number) => {
-  setBox(index);
-  if (box === index) setBox(-1)
-}
+  const handleBox = (index: number) => {
+    setBox(index);
+    if (box === index) setBox(-1);
+  };
 
   {
     /*  const { isLoading, error, data } = useQuery<{ response: Game[] }>({
@@ -129,8 +129,9 @@ const handleBox = (index:number) => {
                       </div>
                     </div>
                     <div className="absolute bottom-8 left-1">
-                      <p className="text-xs font-mono font-extralight cursor-pointer text-gray-500"
-                      onClick={()=> handleBox(index)}
+                      <p
+                        className="text-xs font-mono font-extralight cursor-pointer text-gray-500"
+                        onClick={() => handleBox(index)}
                       >
                         Box Score
                       </p>
@@ -162,7 +163,14 @@ const handleBox = (index:number) => {
                   </div>
                 </div>
                 <div className="order-4">
-                  <BoxScore state={box} gameIndex={index} />
+                  <BoxScore
+                    state={box}
+                    gameIndex={index}
+                    homeTeamID={game.teams.home.id}
+                    visitorsTeamID={game.teams.visitors.id}
+                    homeTeamName={game.teams.home.name}
+                    visitorsTeamName={game.teams.visitors.name}
+                  />
                 </div>
               </div>
             </div>

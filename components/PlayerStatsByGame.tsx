@@ -138,13 +138,13 @@ const TopPlayers = (props: any) => {
                   <div className="flex flex-row ">
                     <p className="order-1 text-xs pl-1">pts</p>
                     <p className="order-2 text-xs pl-2">reb</p>
-                    <p className="order-3 text-xs pl-2">assists</p>
+                    <p className="order-3 text-xs pl-2">ast</p>
                   </div>
                 </div>
                 <div className="order-3 flex text-sm">
-                  <p className="pl-2">{topTwoPlayers[0].points}</p>
-                  <p className="pl-5">{topTwoPlayers[0].totReb}</p>
-                  <p className="pl-5">{topTwoPlayers[0].assists}</p>
+                  <p className="pl-1">{topTwoPlayers[0].points}</p>
+                  <p className="pl-3">{topTwoPlayers[0].totReb}</p>
+                  <p className="pl-3">{topTwoPlayers[0].assists}</p>
                 </div>
               </div>
             </div>
@@ -158,15 +158,15 @@ const TopPlayers = (props: any) => {
                 </div>
                 <div className="order-2 flex">
                   <div className="flex flex-row ">
-                    <p className="order-1 text-xs pl-3">assists</p>
+                    <p className="order-1 text-xs pl-3">ast</p>
                     <p className="order-2 text-xs pl-2">reb</p>
                     <p className="order-3 text-xs pl-3">pts</p>
                   </div>
                 </div>
                 <div className="order-3 flex text-sm">
-                  <p className="pl-7">{topTwoPlayers[1].assists}</p>
-                  <p className="pl-7">{topTwoPlayers[1].totReb}</p>
-                  <p className="pl-5">{topTwoPlayers[1].points}</p>
+                  <p className="pl-4">{topTwoPlayers[1].assists}</p>
+                  <p className="pl-5">{topTwoPlayers[1].totReb}</p>
+                  <p className="pl-4">{topTwoPlayers[1].points}</p>
                 </div>
               </div>
               <div className="pt-2 ">
