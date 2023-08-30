@@ -128,7 +128,7 @@ const Games: React.FC = () => {
                         <TopPlayers gameID={game.id} />
                       </div>
                     </div>
-                    <div className="absolute bottom-8 left-1">
+                    <div className="relative top-32 right-52 ">
                       <p
                         className="text-xs font-mono font-extralight cursor-pointer text-gray-500"
                         onClick={() => handleBox(index)}
