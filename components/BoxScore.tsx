@@ -1,28 +1,73 @@
-import { statsArray } from "./arrays";
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
 
-const BoxScore = (props: any) => {
+interface Player {
+  player: {
+    id: number;
+    firstname: string;
+    lastname: string;
+  };
+
+  team: {
+    id: number;
+    nickname: string;
+  };
+
+  points: number;
+  totReb: number;
+  pos: string;
+  min: string;
+  fgm: number;
+  fga: number;
+  fgp: string;
+  ftm: number;
+  fta: number;
+  ftp: string;
+  tpm: number;
+  tpa: number;
+  tpp: string;
+
+  assists: number;
+  pFouls: number;
+  steals: number;
+  turnovers: number;
+  blocks: number;
+  plusMinus: string;
+  prasb?: number | any;
+}
+
+const key = process.env.NBA_API_KEY;
+const todaysDate = new Date().toISOString().slice(0, 10);
+const options: RequestInit = {
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Host": "api-nba-v1.p.rapidapi.com",
+    "X-RapidAPI-Key": "efd4542df6msh04ed18037300093p17f43ejsnd4fbc1b9f248",
+  },
+};
+
+const BoxScore: React.FC = (props: any) => {
   const homePlayers: any = [];
   const visitorsPlayers: any = [];
 
   const homeID = props.homeTeamID;
   const visitorsID = props.visitorsTeamID;
-
   const homeName = props.homeTeamName;
   const visitorsName = props.visitorsTeamName;
 
-  /*  statsArray.forEach((playerData) => {
-      const { player, team } = playerData;
-      const { id: teamID } = team;
+  const url = `https://api-nba-v1.p.rapidapi.com/players/statistics?game=${props.gameID}`;
 
-      if (teamID === homeID) {
-        homePlayers.push(player);
-      } else if (teamID === visitorsID) {
-        visitorsPlayers.push(player);
-      }
-    });
+  const fetchBox = async () => {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
+    return result.response;
+  };
 
- */
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["playerBox", props.gameID],
+    queryFn: fetchBox,
+  });
 
   const shortenPercentage = (per: string) => {
     if (per === "100.0") {
@@ -32,7 +77,7 @@ const BoxScore = (props: any) => {
     }
   };
 
-  statsArray.map((player) => {
+  data?.map((player: Player) => {
     if (player.team.id === homeID) {
       homePlayers.push(player);
     } else if (player.team.id === visitorsID) {

@@ -54,8 +54,7 @@ const options: RequestInit = {
 const TopPlayers = (props: any) => {
   const url = `https://api-nba-v1.p.rapidapi.com/players/statistics?game=${props.gameID}`;
 
-  {
-    /* const fetchAllPlayers = async () => {
+  const fetchAllPlayers = async () => {
     const response = await fetch(url, options);
     const result = await response.json();
     return result.response;
@@ -66,14 +65,10 @@ const TopPlayers = (props: any) => {
     queryFn: fetchAllPlayers,
   });
 
-*/
-  }
-  const data = true;
-
   let topPlayers: Player[] = [];
 
   if (data) {
-    topPlayers = [...statsArray];
+    topPlayers = [...data];
     topPlayers.forEach((player) => {
       player.prasb =
         player.points +
@@ -107,12 +102,6 @@ const TopPlayers = (props: any) => {
 
   return (
     <div>
-      {/*
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : error ? (
-        <div>Error...</div>
-      ) : */}{" "}
       {data ? (
         topTwoPlayers.length >= 2 ? (
           <div className="flex flex-row">

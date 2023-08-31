@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import PlayerStats from "./PlayerStatsByGame";
+import React, { useState } from "react";
 import TopPlayers from "./PlayerStatsByGame";
-import { gamesArray, statsArray } from "./arrays";
 import BoxScore from "./BoxScore";
 import pistons from "../images/pistons.png";
 
@@ -41,19 +39,15 @@ const options: RequestInit = {
   },
 };
 
-{
-  /*
 const fetchGames = async (): Promise<{ response: Game[] }> => {
   const response = await fetch(
     `https://api-nba-v1.p.rapidapi.com/games?date=2023-03-02`,
     options
   );
   const result = await response.json();
-  console.log(result)
+
   return result;
 };
-*/
-}
 
 const shortenNames = (name: string): string => {
   if (name === "Cavaliers") name = "Cavs";
@@ -70,22 +64,15 @@ const Games: React.FC = () => {
     if (box === index) setBox(-1);
   };
 
-  {
-    /*  const { isLoading, error, data } = useQuery<{ response: Game[] }>({
+  const { isLoading, error, data } = useQuery<{ response: Game[] }>({
     queryKey: ["gamesData"],
     queryFn: fetchGames,
   });
-  */
-  }
-  const data = true;
 
-  {
-    /*  data.response.map */
-  }
   return (
     <div className="">
       {data ? (
-        gamesArray.map((game: any, index: number) => (
+        data.response.map((game: any, index: number) => (
           <div key={index} className="relative">
             <div className=" w-[500px] ">
               <div className="flex flex-col py-1 pr-2  ">
@@ -179,6 +166,7 @@ const Games: React.FC = () => {
                     visitorsTeamID={game.teams.visitors.id}
                     homeTeamName={game.teams.home.name}
                     visitorsTeamName={game.teams.visitors.name}
+                    gameID={game.id}
                   />
                 </div>
               </div>
@@ -189,10 +177,8 @@ const Games: React.FC = () => {
         <span>No games on today!</span>
       )}
 
-      {/*
       <div>{isLoading ? <span>Loading...</span> : <div> </div>}</div>
       <div>{error ? <span>Error...</span> : <div> </div>}</div>
-      */}
     </div>
   );
 };
