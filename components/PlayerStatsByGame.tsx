@@ -36,7 +36,7 @@ interface Player {
   turnovers: number;
   blocks: number;
   plusMinus: string;
-  prasb: number;
+  prasb?: number | any;
 }
 
 interface Game {
