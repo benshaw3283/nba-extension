@@ -25,10 +25,10 @@ const BoxScore = (props: any) => {
  */
 
   const shortenPercentage = (per: string) => {
-    if (per === '100.0') {
-     return per.slice(0,3)
+    if (per === "100.0") {
+      return per.slice(0, 3);
     } else {
-      return per
+      return per;
     }
   };
 
@@ -114,30 +114,30 @@ const BoxScore = (props: any) => {
                       <div className="order-8 flex w-16 justify-end">
                         <p>{player.blocks}</p>
                       </div>
-                      <div className="order-9 flex w-16 justify-end text-blue-500 ">
+                      <div className="order-9 flex w-16 justify-end text-blue-500 font-light">
                         <p>{player.fgm}</p>
                       </div>
-                      <div className="order-10 flex w-16 justify-end text-blue-500 ">
+                      <div className="order-10 flex w-16 justify-end text-blue-500 font-light">
                         <p>{player.fga}</p>
                       </div>
                       <div className="order-11 flex w-20 justify-end">
                         <p>{shortenPercentage(player.fgp)}</p>
                       </div>
-                      <div className="order-12 flex w-14 justify-end text-blue-500">
+                      <div className="order-12 flex w-14 justify-end text-blue-500 font-light">
                         <p>{player.tpm}</p>
                       </div>
                     </div>
                     <div className="order-2 flex flex-row  border-b border-gray-300 py-2 ">
-                      <div className="flex w-14 justify-end text-blue-500">
+                      <div className="flex w-14 justify-end text-blue-500 font-light">
                         <p>{player.tpa}</p>
                       </div>
                       <div className="flex w-20 justify-end">
                         <p>{shortenPercentage(player.tpp)}</p>
                       </div>
-                      <div className="flex w-14 justify-end text-blue-500">
+                      <div className="flex w-14 justify-end text-blue-500 font-light">
                         <p>{player.ftm}</p>
                       </div>
-                      <div className="flex w-16 justify-end text-blue-500">
+                      <div className="flex w-16 justify-end text-blue-500 font-light">
                         <p>{player.fta}</p>
                       </div>
                       <div className="flex w-20 justify-end">
@@ -158,9 +158,7 @@ const BoxScore = (props: any) => {
               </div>
             ))}
           </div>
-          
-          
-          
+
           <div className="w-full bg-white overflow-x-scroll container border-y-2 rounded-lg">
             <div className="py-4 px-2 text-xl font-bold">
               <h1>{visitorsName}</h1>

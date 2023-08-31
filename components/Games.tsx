@@ -5,6 +5,7 @@ import PlayerStats from "./PlayerStatsByGame";
 import TopPlayers from "./PlayerStatsByGame";
 import { gamesArray, statsArray } from "./arrays";
 import BoxScore from "./BoxScore";
+import pistons from "../images/pistons.png";
 
 interface Team {
   logo: string;
@@ -93,7 +94,11 @@ const Games: React.FC = () => {
                     <div className="flex order-1 pt-2 pl-4 flex-col items-center ">
                       <div className="order-1">
                         <Image
-                          src={game.teams.home.logo}
+                          src={
+                            game.teams.home.nickname === "Pistons"
+                              ? pistons
+                              : game.teams.home.logo
+                          }
                           width={50}
                           height={50}
                           alt="home_logo"
@@ -108,7 +113,7 @@ const Games: React.FC = () => {
                         <p className="text-xs">32-37</p>
                       </div>
                     </div>
-                    <p className=" order-2 pl-8 pt-4 text-2xl font-bold ">
+                    <p className=" order-2 pl-8 pt-4 text-3xl font-bold ">
                       {game.scores.home.points}
                     </p>
                   </div>
@@ -142,7 +147,11 @@ const Games: React.FC = () => {
                     <div className="flex order-2 pt-2 pr-4 flex-col items-center">
                       <div className="order-1">
                         <Image
-                          src={game.teams.visitors.logo}
+                          src={
+                            game.teams.visitors.nickname === "Pistons"
+                              ? pistons
+                              : game.teams.visitors.logo
+                          }
                           width={50}
                           height={50}
                           alt="visitors_logo"
@@ -157,7 +166,7 @@ const Games: React.FC = () => {
                         <p className="text-xs">32-37</p>
                       </div>
                     </div>
-                    <p className=" order-1 pr-8 pt-4 text-2xl font-bold ">
+                    <p className=" order-1 pr-8 pt-4 text-3xl font-bold ">
                       {game.scores.visitors.points}
                     </p>
                   </div>
