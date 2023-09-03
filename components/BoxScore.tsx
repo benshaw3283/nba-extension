@@ -60,7 +60,7 @@ const BoxScore: React.FC = (props: any) => {
   const fetchBox = async () => {
     const response = await fetch(url, options);
     const result = await response.json();
-    console.log(result);
+
     return result.response;
   };
 
@@ -95,9 +95,9 @@ const BoxScore: React.FC = (props: any) => {
             <div className="py-4 px-2 text-xl font-bold">
               <h1>{homeName}</h1>
             </div>
-            <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1300px]">
+            <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1332px]">
               <p className="">PLAYER</p>
-              <p className="pl-24">MIN</p>
+              <p className="pl-32">MIN</p>
               <p className="pl-8">PTS</p>
               <p className="pl-10">REB</p>
               <p className="pl-8">AST</p>
@@ -114,7 +114,7 @@ const BoxScore: React.FC = (props: any) => {
               <p className="pl-10">FT%</p>
               <p className="pl-10">TO</p>
               <p className="pl-10">PF</p>
-              <p className="pl-10">+-</p>
+              <p className="pl-11">+-</p>
             </div>
             {homePlayers.map((player: any, index: number) => (
               <div key={index}>
@@ -123,13 +123,13 @@ const BoxScore: React.FC = (props: any) => {
                     <div className="flex flex-row border-b border-gray-300 py-2 order-1 ">
                       {player.player.firstname.length +
                         player.player.lastname.length >=
-                      16 ? (
-                        <div className="text-xs  flex order-1 w-32 font-semibold place-items-center">
+                      17 ? (
+                        <div className="text-xs  flex order-1 w-40 font-semibold place-items-center">
                           <p className="pr-1 pl-1">{player.player.firstname}</p>
                           <p>{player.player.lastname}</p>
                         </div>
                       ) : (
-                        <div className="text-sm  flex order-1 w-32 font-semibold">
+                        <div className="text-sm  flex order-1 w-40 font-semibold">
                           <p className="pr-1 pl-2">{player.player.firstname}</p>
                           <p>{player.player.lastname}</p>
                         </div>
