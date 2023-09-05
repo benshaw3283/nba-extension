@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import pic from "../images/brown.png";
+//import pic from "../images/brown.png";
 import { statsArray } from "./arrays";
 
 interface Player {
@@ -111,14 +111,14 @@ const TopPlayers = (props: any) => {
                   topTwoPlayers[0].player.firstname.length +
                     topTwoPlayers[0].player.lastname.length >
                   14
-                    ? " pt-2 pr-4"
-                    : "pt-2"
+                    ? "  pr-4"
+                    : ""
                 }
               >
                 <Image
-                  src={pic}
+                  src={`/${topTwoPlayers[0].player.firstname}_${topTwoPlayers[0].player.lastname}.png`}
                   alt="g"
-                  width={40}
+                  width={60}
                   height={35}
                   className="rounded-full"
                 />
@@ -227,7 +227,7 @@ const TopPlayers = (props: any) => {
                 }
               >
                 <Image
-                  src={pic}
+                  src="/jaylen_brown.png"
                   alt="g"
                   width={40}
                   height={35}
