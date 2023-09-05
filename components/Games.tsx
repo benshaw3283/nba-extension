@@ -3,7 +3,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import TopPlayers from "./PlayerStatsByGame";
 import BoxScore from "./BoxScore";
-import pistons from "../images/pistons.png";
 
 interface Team {
   logo: string;
@@ -83,7 +82,7 @@ const Games: React.FC = () => {
                         <Image
                           src={
                             game.teams.home.nickname === "Pistons"
-                              ? pistons
+                              ? "/pistons.png"
                               : game.teams.home.logo
                           }
                           width={50}
@@ -136,7 +135,7 @@ const Games: React.FC = () => {
                         <Image
                           src={
                             game.teams.visitors.nickname === "Pistons"
-                              ? pistons
+                              ? "/pistons.png"
                               : game.teams.visitors.logo
                           }
                           width={50}
