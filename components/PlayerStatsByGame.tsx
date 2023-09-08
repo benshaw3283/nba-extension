@@ -98,7 +98,28 @@ const TopPlayers = (props: any) => {
         }
       }
     }
+    if (
+      topTwoPlayers[0].team.id !== props.homeTeamID ||
+      topTwoPlayers[1].team.id !== props.visitorsTeamID
+    ) {
+      let temp = topTwoPlayers[0];
+      topTwoPlayers[0] = topTwoPlayers[1];
+      topTwoPlayers[1] = temp;
+    }
   }
+
+  const matchPlayerPic = (playerName: string) => {
+    let endings = [" jr", " Jr.", " III", " II", " IV", " V", " VI"];
+
+    const includedEnding = endings.find((end) => playerName.includes(end));
+
+    if (includedEnding) {
+      const newName = playerName.replace(includedEnding, "");
+      return newName;
+    } else {
+      return playerName;
+    }
+  };
 
   return (
     <div>
@@ -110,24 +131,27 @@ const TopPlayers = (props: any) => {
                 className={
                   topTwoPlayers[0].player.firstname.length +
                     topTwoPlayers[0].player.lastname.length >
-                  14
-                    ? "  pr-4"
-                    : ""
+                  13
+                    ? " -right-6 "
+                    : "-right-4"
                 }
               >
                 <Image
-                  src={`/${topTwoPlayers[0].player.firstname}_${topTwoPlayers[0].player.lastname}.png`}
+                  src={matchPlayerPic(
+                    `/${topTwoPlayers[0].player.firstname}_${topTwoPlayers[0].player.lastname}.png`
+                  )}
                   alt="g"
                   width={60}
                   height={35}
                   className="rounded-full"
                 />
               </div>
+
               {topTwoPlayers[0].player.firstname.length +
                 topTwoPlayers[0].player.lastname.length >
               13 ? (
-                <div className="flex flex-col relative -top-5 -left-4">
-                  <div className="order-1 flex w-32">
+                <div className="flex flex-col relative -top-5 -left-0">
+                  <div className="order-1 flex w-28">
                     <p className="text-sm pr-4">
                       {topTwoPlayers[0].player.firstname}{" "}
                       {topTwoPlayers[0].player.lastname}
@@ -149,7 +173,7 @@ const TopPlayers = (props: any) => {
                 </div>
               ) : (
                 <div className="flex flex-col ">
-                  <div className="order-1 flex w-32">
+                  <div className="order-1 flex w-28">
                     <p className="text-sm pr-4">
                       {topTwoPlayers[0].player.firstname}{" "}
                       {topTwoPlayers[0].player.lastname}
@@ -171,49 +195,51 @@ const TopPlayers = (props: any) => {
                 </div>
               )}
             </div>
-            <div className="flex order-2 pr-2 pt-2">
+            <div className="flex order-2 pr-2 pt-2 ">
               {topTwoPlayers[1].player.firstname.length +
                 topTwoPlayers[1].player.lastname.length >
               13 ? (
-                <div className="flex flex-col relative -top-0 -right-4">
-                  <div className="flex order-1 w-36 justify-end">
-                    <p className="text-sm pr-3">
+                <div className="flex flex-col relative -top-5 ">
+                  <div className="order-1 flex w-28 bg-red-500 ">
+                    <p className="text-sm  pl-12">
                       {topTwoPlayers[1].player.firstname}{" "}
                       {topTwoPlayers[1].player.lastname}
                     </p>
                   </div>
-                  <div className="order-2 flex pl-9">
-                    <div className="flex flex-row">
-                      <p className="order-1 text-xs pl-3">ast</p>
+
+                  <div className="order-2 flex">
+                    <div className="flex flex-row pl-7">
+                      <p className="order-1 text-xs pl-1">pts</p>
                       <p className="order-2 text-xs pl-2">reb</p>
-                      <p className="order-3 text-xs pl-3">pts</p>
+                      <p className="order-3 text-xs pl-2">ast</p>
                     </div>
                   </div>
-                  <div className="order-3 flex text-sm pl-9">
-                    <p className="pl-4">{topTwoPlayers[1].assists}</p>
-                    <p className="pl-5">{topTwoPlayers[1].totReb}</p>
-                    <p className="pl-4">{topTwoPlayers[1].points}</p>
+                  <div className="order-3 flex text-sm pl-7">
+                    <p className="pl-1">{topTwoPlayers[1].points}</p>
+                    <p className="pl-3">{topTwoPlayers[1].totReb}</p>
+                    <p className="pl-3">{topTwoPlayers[1].assists}</p>
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col">
-                  <div className="flex order-1 w-32 justify-end">
+                <div className="flex flex-col ">
+                  <div className="order-1 flex w-28 justify-end">
                     <p className="text-sm ">
                       {topTwoPlayers[1].player.firstname}{" "}
                       {topTwoPlayers[1].player.lastname}
                     </p>
                   </div>
-                  <div className="order-2 flex pl-9">
-                    <div className="flex flex-row ">
-                      <p className="order-1 text-xs pl-3">ast</p>
+
+                  <div className="order-2 flex">
+                    <div className="flex flex-row pl-7">
+                      <p className="order-1 text-xs pl-1">pts</p>
                       <p className="order-2 text-xs pl-2">reb</p>
-                      <p className="order-3 text-xs pl-3">pts</p>
+                      <p className="order-3 text-xs pl-2">ast</p>
                     </div>
                   </div>
-                  <div className="order-3 flex text-sm pl-9">
-                    <p className="pl-4">{topTwoPlayers[1].assists}</p>
-                    <p className="pl-5">{topTwoPlayers[1].totReb}</p>
-                    <p className="pl-4">{topTwoPlayers[1].points}</p>
+                  <div className="order-3 flex text-sm pl-7">
+                    <p className="pl-1">{topTwoPlayers[1].points}</p>
+                    <p className="pl-3">{topTwoPlayers[1].totReb}</p>
+                    <p className="pl-3">{topTwoPlayers[1].assists}</p>
                   </div>
                 </div>
               )}
@@ -221,15 +247,17 @@ const TopPlayers = (props: any) => {
                 className={
                   topTwoPlayers[1].player.firstname.length +
                     topTwoPlayers[1].player.lastname.length >
-                  14
-                    ? " pt-2 pr-2"
-                    : "pt-2 "
+                  13
+                    ? "  "
+                    : ""
                 }
               >
                 <Image
-                  src="/jaylen_brown.png"
+                  src={matchPlayerPic(
+                    `/${topTwoPlayers[1].player.firstname}_${topTwoPlayers[1].player.lastname}.png`
+                  )}
                   alt="g"
-                  width={40}
+                  width={60}
                   height={35}
                   className="rounded-full"
                 />

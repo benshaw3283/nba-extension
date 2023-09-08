@@ -116,7 +116,11 @@ const Games: React.FC = () => {
 
                     <div className=" absolute top-24  flex-col">
                       <div className="flex order-1  border-slate-400">
-                        <TopPlayers gameID={game.id} />
+                        <TopPlayers
+                          gameID={game.id}
+                          homeTeamID={game.teams.home.id}
+                          visitorsTeamID={game.teams.visitors.id}
+                        />
                       </div>
                     </div>
                     <div className="relative top-32 right-52 ">
