@@ -86,6 +86,19 @@ const BoxScore: React.FC = (props: any) => {
     }
   });
 
+  const matchPlayerPic = (playerName: string) => {
+    let endings = [" jr", " Jr.", " III", " II", " IV", " V", " VI"];
+
+    const includedEnding = endings.find((end) => playerName.includes(end));
+
+    if (includedEnding) {
+      const newName = playerName.replace(includedEnding, "");
+      return newName;
+    } else {
+      return playerName;
+    }
+  };
+
   return (
     <div className="">
       {props.state !== props.gameIndex ? (
@@ -122,6 +135,18 @@ const BoxScore: React.FC = (props: any) => {
                 <div className="bg-white w-[1300px] ">
                   <div className="flex flex-row">
                     <div className="flex flex-row border-b border-gray-300 py-2 order-1 ">
+                      <Image
+                        alt="player_pic"
+                        width={50}
+                        height={30}
+                        src={
+                          !`/${player.player.firstname}_${player.player.lastname}.png`
+                            ? "/darius_days.png"
+                            : matchPlayerPic(
+                                `/${player.player.firstname}_${player.player.lastname}.png`
+                              )
+                        }
+                      />
                       {player.player.firstname.length +
                         player.player.lastname.length >=
                       17 ? (
@@ -130,7 +155,7 @@ const BoxScore: React.FC = (props: any) => {
                           <p>{player.player.lastname}</p>
                         </div>
                       ) : (
-                        <div className="text-sm  flex order-1 w-40 font-semibold">
+                        <div className="text-sm  flex order-1 w-40 font-semibold place-items-center">
                           <p className="pr-1 pl-2">{player.player.firstname}</p>
                           <p>{player.player.lastname}</p>
                         </div>
@@ -235,6 +260,15 @@ const BoxScore: React.FC = (props: any) => {
                 <div className="bg-white w-[1300px] ">
                   <div className="flex flex-row">
                     <div className="flex flex-row border-b border-gray-300 py-2 order-1 ">
+                      <Image
+                        className="rounded-full place-self-center"
+                        alt="player_pic"
+                        width={50}
+                        height={30}
+                        src={matchPlayerPic(
+                          `/${player.player.firstname}_${player.player.lastname}.png`
+                        )}
+                      />
                       {player.player.firstname.length +
                         player.player.lastname.length >=
                       16 ? (
@@ -243,7 +277,7 @@ const BoxScore: React.FC = (props: any) => {
                           <p>{player.player.lastname}</p>
                         </div>
                       ) : (
-                        <div className="text-sm  flex order-1 w-32 font-semibold">
+                        <div className="text-sm  flex order-1 w-32 font-semibold place-items-center">
                           <p className="pr-1 pl-2">{player.player.firstname}</p>
                           <p>{player.player.lastname}</p>
                         </div>
