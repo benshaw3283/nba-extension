@@ -1,8 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-//import pic from "../images/brown.png";
-import { statsArray } from "./arrays";
+import ImageWithFallback from "./ImageWithFallback";
 
 interface Player {
   player: {
@@ -136,11 +135,11 @@ const TopPlayers = (props: any) => {
                     : "-right-4"
                 }
               >
-                <Image
+                <ImageWithFallback
                   src={matchPlayerPic(
                     `/${topTwoPlayers[0].player.firstname}_${topTwoPlayers[0].player.lastname}.png`
                   )}
-                  alt="g"
+                  alt="player_pic"
                   width={60}
                   height={35}
                   className="rounded-full"

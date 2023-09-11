@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { useState } from "react";
+import ImageWithFallback from "./ImageWithFallback";
 
 interface Player {
   player: {
@@ -135,17 +137,13 @@ const BoxScore: React.FC = (props: any) => {
                 <div className="bg-white w-[1300px] ">
                   <div className="flex flex-row">
                     <div className="flex flex-row border-b border-gray-300 py-2 order-1 ">
-                      <Image
+                      <ImageWithFallback
                         alt="player_pic"
+                        src={matchPlayerPic(
+                          `/${player.player.firstname}_${player.player.lastname}.png`
+                        )}
                         width={50}
                         height={30}
-                        src={
-                          !`/${player.player.firstname}_${player.player.lastname}.png`
-                            ? "/darius_days.png"
-                            : matchPlayerPic(
-                                `/${player.player.firstname}_${player.player.lastname}.png`
-                              )
-                        }
                       />
                       {player.player.firstname.length +
                         player.player.lastname.length >=
