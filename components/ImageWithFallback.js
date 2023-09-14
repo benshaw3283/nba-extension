@@ -5,21 +5,20 @@ import Image from "next/image";
 
 const ImageWithFallback = ({
   fallbackImage = defaultPic,
-  alt,
-  src,
+
   ...props
 }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
     setError(null);
-  }, [src]);
+  }, [props.src]);
 
   return (
     <Image
-      alt={alt}
+      alt={props.alt}
       onError={() => setError(true)}
-      src={error ? fallbackImage : src}
+      src={error ? fallbackImage : props.src}
       {...props}
       width={props.width}
       height={props.height}

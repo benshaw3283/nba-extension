@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useState } from "react";
 import ImageWithFallback from "./ImageWithFallback";
+import { type } from "os";
 
 interface Player {
   player: {
@@ -39,6 +40,16 @@ interface Player {
   prasb?: number | any;
 }
 
+type Props = {
+  state: any;
+  homeTeamID: number;
+  visitorsTeamID: number;
+  homeTeamName: string;
+  visitorsTeamName: string;
+  gameID: number;
+  gameIndex: number;
+};
+
 const key = process.env.NBA_API_KEY;
 const todaysDate = new Date().toISOString().slice(0, 10);
 const options: RequestInit = {
@@ -49,7 +60,7 @@ const options: RequestInit = {
   },
 };
 
-const BoxScore: React.FC = (props: any) => {
+const BoxScore = (props: Props) => {
   const homePlayers: any = [];
   const visitorsPlayers: any = [];
 

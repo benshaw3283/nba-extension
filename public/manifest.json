@@ -1,0 +1,9 @@
+{
+  "name": "NBA Daily",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "NBA Daily",
+    "default_popup": "index.html"
+  }
+}

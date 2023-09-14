@@ -4,6 +4,7 @@ const nextConfig = {
 };
 
 module.exports = {
+  output: "export",
   images: {
     remotePatterns: [
       {
@@ -11,5 +12,6 @@ module.exports = {
         hostname: "upload.wikimedia.org",
       },
     ],
+    unoptimized: true,
   },
 };
