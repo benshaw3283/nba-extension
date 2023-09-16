@@ -270,7 +270,7 @@ const TopPlayers = (props: any) => {
               13 ? (
                 <div className="flex flex-col relative -top-5 ">
                   <div className="order-1 flex w-[110px] border-b-2 ">
-                    <p className="text-sm  pl-12 font-bold">
+                    <p className="text-sm  pl-7 font-bold">
                       {topTwoPlayers[1].player.firstname}{" "}
                       {topTwoPlayers[1].player.lastname}
                     </p>
