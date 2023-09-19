@@ -129,26 +129,36 @@ const BoxScore = (props: Props) => {
       ) : (
         <div>
           <div className="w-full bg-white overflow-x-scroll container border-y-2 rounded-lg">
-            <div className="py-4 px-2 text-xl font-bold">
-              <h1>{homeName}</h1>
+            <div className="py-4 px-2  flex flex-row w-[1350px]">
+              <h1 className="text-xl font-bold">{homeName}</h1>
+              <div className="w-12"> </div>
+              <div className="flex w-3 h-2 bg-green-600 place-self-center "></div>
+              <p className="text-xs place-self-center pl-1 text-gray-500">
+                Above league average
+              </p>
+              <div className="w-6"> </div>
+              <div className="flex w-3 h-2 bg-red-600 place-self-center "></div>
+              <p className="text-xs place-self-center pl-1 text-gray-500">
+                Below league average
+              </p>
             </div>
-            <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1332px]">
+            <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1352px]">
               <p className="">PLAYER</p>
               <p className="pl-[170px]">MIN</p>
               <p className="pl-10">PTS</p>
-              <p className="pl-10">REB</p>
+              <p className="pl-8">REB</p>
               <p className="pl-8">AST</p>
               <p className="pl-8">STL</p>
-              <p className="pl-9">BLK</p>
+              <p className="pl-8">BLK</p>
               <p className="pl-8 ">FGM</p>
               <p className="pl-8">FGA</p>
-              <p className="pl-11">FG%</p>
+              <p className="pl-9">FG%</p>
               <p className="pl-8">3PM</p>
               <p className="pl-8">3PA</p>
               <p className="pl-9">3P%</p>
-              <p className="pl-9">FTM</p>
-              <p className="pl-9">FTA</p>
-              <p className="pl-10">FT%</p>
+              <p className="pl-8">FTM</p>
+              <p className="pl-8">FTA</p>
+              <p className="pl-9">FT%</p>
               <p className="pl-10">TO</p>
               <p className="pl-10">PF</p>
               <p className="pl-11">+-</p>
@@ -207,11 +217,19 @@ const BoxScore = (props: Props) => {
                       <div className="order-9 flex w-16 justify-end text-blue-500 ">
                         <p>{player.fgm}</p>
                       </div>
-                      <div className="order-10 flex w-[68px] justify-end text-blue-500 ">
+                      <div className="order-10 flex w-[70px] justify-end text-blue-500 ">
                         <p>{player.fga}</p>
                       </div>
                       <div className="order-11 flex w-[85px] justify-end">
-                        <p>{shortenPercentage(player.fgp)}</p>
+                        <p
+                          className={
+                            player.fgp > 47.5
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {shortenPercentage(player.fgp)}
+                        </p>
                       </div>
                       <div className="order-12 flex w-14 justify-end text-blue-500">
                         <p>{player.tpm}</p>
@@ -221,17 +239,33 @@ const BoxScore = (props: Props) => {
                       <div className="flex w-16 justify-end text-blue-500">
                         <p>{player.tpa}</p>
                       </div>
-                      <div className="flex w-[68px] justify-end">
-                        <p>{shortenPercentage(player.tpp)}</p>
+                      <div className="flex w-[70px] justify-end">
+                        <p
+                          className={
+                            player.tpp > 36.1
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {shortenPercentage(player.tpp)}
+                        </p>
                       </div>
-                      <div className="flex w-14 justify-end text-blue-500">
+                      <div className="flex w-[54px] justify-end text-blue-500">
                         <p>{player.ftm}</p>
                       </div>
                       <div className="flex w-16 justify-end text-blue-500">
                         <p>{player.fta}</p>
                       </div>
                       <div className="flex w-[70px] justify-end">
-                        <p>{shortenPercentage(player.ftp)}</p>
+                        <p
+                          className={
+                            player.ftp > 78.2
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {shortenPercentage(player.ftp)}
+                        </p>
                       </div>
                       <div className="flex w-[60px] justify-end">
                         <p>{player.turnovers}</p>
@@ -240,7 +274,15 @@ const BoxScore = (props: Props) => {
                         <p>{player.pFouls}</p>
                       </div>
                       <div className="flex w-24 pl-4 justify-center">
-                        <p>{player.plusMinus}</p>
+                        <p
+                          className={
+                            player.plusMinus.includes("+")
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {player.plusMinus}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -250,33 +292,43 @@ const BoxScore = (props: Props) => {
           </div>
 
           <div className="w-full bg-white overflow-x-scroll container border-y-2 rounded-lg">
-            <div className="py-4 px-2 text-xl font-bold">
-              <h1>{visitorsName}</h1>
+            <div className="py-4 px-2  flex flex-row w-[1350px]">
+              <h1 className="text-xl font-bold">{visitorsName}</h1>
+              <div className="w-12"> </div>
+              <div className="flex w-3 h-2 bg-green-600 place-self-center "></div>
+              <p className="text-xs place-self-center pl-1 text-gray-500">
+                Above league average
+              </p>
+              <div className="w-6"> </div>
+              <div className="flex w-3 h-2 bg-red-600 place-self-center "></div>
+              <p className="text-xs place-self-center pl-1 text-gray-500">
+                Below league average
+              </p>
             </div>
             <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1350px]">
               <p className="">PLAYER</p>
               <p className="pl-[170px]">MIN</p>
               <p className="pl-10">PTS</p>
-              <p className="pl-10">REB</p>
+              <p className="pl-8">REB</p>
               <p className="pl-8">AST</p>
               <p className="pl-8">STL</p>
-              <p className="pl-9">BLK</p>
+              <p className="pl-8">BLK</p>
               <p className="pl-8 ">FGM</p>
               <p className="pl-8">FGA</p>
-              <p className="pl-11">FG%</p>
+              <p className="pl-9">FG%</p>
               <p className="pl-8">3PM</p>
               <p className="pl-8">3PA</p>
               <p className="pl-9">3P%</p>
-              <p className="pl-9">FTM</p>
-              <p className="pl-9">FTA</p>
-              <p className="pl-10">FT%</p>
+              <p className="pl-8">FTM</p>
+              <p className="pl-8">FTA</p>
+              <p className="pl-9">FT%</p>
               <p className="pl-10">TO</p>
               <p className="pl-10">PF</p>
-              <p className="pl-10">+-</p>
+              <p className="pl-11">+-</p>
             </div>
             {visitorsPlayers.map((player: any, index: number) => (
               <div key={index}>
-                <div className="bg-white w-[1300px] ">
+                <div className="bg-white w-[1350px] ">
                   <div className="flex flex-row">
                     <div className="flex flex-row border-b border-gray-300 py-2 order-1 place-items-center">
                       <ImageWithFallback
@@ -328,11 +380,19 @@ const BoxScore = (props: Props) => {
                       <div className="order-9 flex w-16 justify-end text-blue-500 ">
                         <p>{player.fgm}</p>
                       </div>
-                      <div className="order-10 flex w-[68px] justify-end text-blue-500 ">
+                      <div className="order-10 flex w-[70px] justify-end text-blue-500 ">
                         <p>{player.fga}</p>
                       </div>
                       <div className="order-11 flex w-[85px] justify-end">
-                        <p>{shortenPercentage(player.fgp)}</p>
+                        <p
+                          className={
+                            player.fgp > 47.5
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {shortenPercentage(player.fgp)}
+                        </p>
                       </div>
                       <div className="order-12 flex w-14 justify-end text-blue-500">
                         <p>{player.tpm}</p>
@@ -342,17 +402,33 @@ const BoxScore = (props: Props) => {
                       <div className="flex w-16 justify-end text-blue-500">
                         <p>{player.tpa}</p>
                       </div>
-                      <div className="flex w-[68px] justify-end">
-                        <p>{shortenPercentage(player.tpp)}</p>
+                      <div className="flex w-[70px] justify-end">
+                        <p
+                          className={
+                            player.tpp > 36.1
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {shortenPercentage(player.tpp)}
+                        </p>
                       </div>
-                      <div className="flex w-14 justify-end text-blue-500">
+                      <div className="flex w-[54px] justify-end text-blue-500">
                         <p>{player.ftm}</p>
                       </div>
                       <div className="flex w-16 justify-end text-blue-500">
                         <p>{player.fta}</p>
                       </div>
                       <div className="flex w-[70px] justify-end">
-                        <p>{shortenPercentage(player.ftp)}</p>
+                        <p
+                          className={
+                            player.ftp > 78.2
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {shortenPercentage(player.ftp)}
+                        </p>
                       </div>
                       <div className="flex w-[60px] justify-end">
                         <p>{player.turnovers}</p>
@@ -361,7 +437,15 @@ const BoxScore = (props: Props) => {
                         <p>{player.pFouls}</p>
                       </div>
                       <div className="flex w-24 pl-4 justify-center">
-                        <p>{player.plusMinus}</p>
+                        <p
+                          className={
+                            player.plusMinus.includes("+")
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {player.plusMinus}
+                        </p>
                       </div>
                     </div>
                   </div>
