@@ -142,25 +142,25 @@ const BoxScore = (props: Props) => {
                 Below league average
               </p>
             </div>
-            <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1352px]">
-              <p className="">PLAYER</p>
-              <p className="pl-[170px]">MIN</p>
-              <p className="pl-10">PTS</p>
+            <div className="flex flex-row py-2  pb-6 border-b-2 font-thin w-[1352px] text-lg">
+              <p className="ml-4">PLAYER</p>
+              <p className="pl-[156px]">MIN</p>
+              <p className="pl-[38px]">PTS</p>
               <p className="pl-8">REB</p>
-              <p className="pl-8">AST</p>
-              <p className="pl-8">STL</p>
-              <p className="pl-8">BLK</p>
+              <p className="pl-7">AST</p>
+              <p className="pl-7">STL</p>
+              <p className="pl-7">BLK</p>
               <p className="pl-8 ">FGM</p>
               <p className="pl-8">FGA</p>
               <p className="pl-9">FG%</p>
-              <p className="pl-8">3PM</p>
-              <p className="pl-8">3PA</p>
-              <p className="pl-9">3P%</p>
-              <p className="pl-8">FTM</p>
-              <p className="pl-8">FTA</p>
+              <p className="pl-7">3PM</p>
+              <p className="pl-7">3PA</p>
+              <p className="pl-8">3P%</p>
+              <p className="pl-7">FTM</p>
+              <p className="pl-7">FTA</p>
               <p className="pl-9">FT%</p>
-              <p className="pl-10">TO</p>
-              <p className="pl-10">PF</p>
+              <p className="pl-8">TO</p>
+              <p className="pl-9">PF</p>
               <p className="pl-11">+-</p>
             </div>
             {homePlayers.map((player: any, index: number) => (
@@ -192,93 +192,93 @@ const BoxScore = (props: Props) => {
                       <div className="order-2  w-10"></div>
 
                       <div className="flex order-3   w-5 justify-center font-serif">
-                        <p className="text-sm ">{player.min}</p>
+                        <p className="text-base ">{player.min}</p>
                       </div>
 
                       <div className="flex order-4  w-[70px] justify-end ">
-                        <p className="text-sm ">{player.points}</p>
+                        <p className="text-base">{player.points}</p>
                       </div>
 
                       <div className="order-5 flex w-[66px] justify-end ">
-                        <p>{player.totReb}</p>
+                        <p className="text-base">{player.totReb}</p>
                       </div>
 
                       <div className="order-6 flex w-[60px] justify-end ">
-                        <p>{player.assists}</p>
+                        <p className="text-base">{player.assists}</p>
                       </div>
 
                       <div className="order-7 flex w-16 justify-end">
-                        <p>{player.steals}</p>
+                        <p className="text-base">{player.steals}</p>
                       </div>
 
                       <div className="order-8 flex w-16 justify-end">
-                        <p>{player.blocks}</p>
+                        <p className="text-base">{player.blocks}</p>
                       </div>
                       <div className="order-9 flex w-16 justify-end text-blue-500 ">
-                        <p>{player.fgm}</p>
+                        <p className="text-base">{player.fgm}</p>
                       </div>
                       <div className="order-10 flex w-[70px] justify-end text-blue-500 ">
-                        <p>{player.fga}</p>
+                        <p className="text-base">{player.fga}</p>
                       </div>
                       <div className="order-11 flex w-[85px] justify-end">
                         <p
                           className={
                             player.fgp > 47.5
-                              ? "text-green-600"
-                              : "text-red-600"
+                              ? "text-green-600 text-base"
+                              : "text-red-600 text-base"
                           }
                         >
                           {shortenPercentage(player.fgp)}
                         </p>
                       </div>
-                      <div className="order-12 flex w-14 justify-end text-blue-500">
-                        <p>{player.tpm}</p>
+                      <div className="order-12 flex w-[58px] justify-end text-blue-500">
+                        <p className="text-base">{player.tpm}</p>
                       </div>
                     </div>
                     <div className="order-2 flex flex-row  border-b border-gray-300 py-2 place-items-center">
-                      <div className="flex w-16 justify-end text-blue-500">
-                        <p>{player.tpa}</p>
+                      <div className="flex w-[62px] justify-end text-blue-500">
+                        <p className="text-base">{player.tpa}</p>
                       </div>
                       <div className="flex w-[70px] justify-end">
                         <p
                           className={
                             player.tpp > 36.1
-                              ? "text-green-600"
-                              : "text-red-600"
+                              ? "text-green-600 text-base"
+                              : "text-red-600 text-base"
                           }
                         >
                           {shortenPercentage(player.tpp)}
                         </p>
                       </div>
-                      <div className="flex w-[54px] justify-end text-blue-500">
-                        <p>{player.ftm}</p>
+                      <div className="flex w-[56px] justify-end text-blue-500">
+                        <p className="text-base">{player.ftm}</p>
                       </div>
-                      <div className="flex w-16 justify-end text-blue-500">
-                        <p>{player.fta}</p>
+                      <div className="flex w-[62px] justify-end text-blue-500">
+                        <p className="text-base">{player.fta}</p>
                       </div>
-                      <div className="flex w-[70px] justify-end">
+                      <div className="flex w-[72px] justify-end">
                         <p
                           className={
                             player.ftp > 78.2
-                              ? "text-green-600"
-                              : "text-red-600"
+                              ? "text-green-600 text-base"
+                              : "text-red-600 text-base"
                           }
                         >
                           {shortenPercentage(player.ftp)}
                         </p>
                       </div>
                       <div className="flex w-[60px] justify-end">
-                        <p>{player.turnovers}</p>
+                        <p className="text-base">{player.turnovers}</p>
                       </div>
                       <div className="flex w-14 justify-end">
-                        <p>{player.pFouls}</p>
+                        <p className="text-base">{player.pFouls}</p>
                       </div>
                       <div className="flex w-24 pl-4 justify-center">
                         <p
                           className={
                             player.plusMinus.includes("+")
-                              ? "text-green-600"
-                              : "text-red-600"
+                              ? "text-green-600 text-base"
+                              : "text-red-600 text-base"
                           }
                         >
                           {player.plusMinus}
@@ -305,25 +305,25 @@ const BoxScore = (props: Props) => {
                 Below league average
               </p>
             </div>
-            <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1350px]">
-              <p className="">PLAYER</p>
-              <p className="pl-[170px]">MIN</p>
-              <p className="pl-10">PTS</p>
+            <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1350px] text-lg">
+              <p className="ml-4">PLAYER</p>
+              <p className="pl-[156px]">MIN</p>
+              <p className="pl-[38px]">PTS</p>
               <p className="pl-8">REB</p>
-              <p className="pl-8">AST</p>
-              <p className="pl-8">STL</p>
-              <p className="pl-8">BLK</p>
+              <p className="pl-7">AST</p>
+              <p className="pl-7">STL</p>
+              <p className="pl-7">BLK</p>
               <p className="pl-8 ">FGM</p>
               <p className="pl-8">FGA</p>
               <p className="pl-9">FG%</p>
-              <p className="pl-8">3PM</p>
-              <p className="pl-8">3PA</p>
-              <p className="pl-9">3P%</p>
-              <p className="pl-8">FTM</p>
-              <p className="pl-8">FTA</p>
+              <p className="pl-7">3PM</p>
+              <p className="pl-7">3PA</p>
+              <p className="pl-8">3P%</p>
+              <p className="pl-7">FTM</p>
+              <p className="pl-7">FTA</p>
               <p className="pl-9">FT%</p>
-              <p className="pl-10">TO</p>
-              <p className="pl-10">PF</p>
+              <p className="pl-8">TO</p>
+              <p className="pl-9">PF</p>
               <p className="pl-11">+-</p>
             </div>
             {visitorsPlayers.map((player: any, index: number) => (
@@ -355,93 +355,93 @@ const BoxScore = (props: Props) => {
                       <div className="order-2  w-10"></div>
 
                       <div className="flex order-3   w-5 justify-center font-serif">
-                        <p className="text-sm ">{player.min}</p>
+                        <p className="text-base ">{player.min}</p>
                       </div>
 
                       <div className="flex order-4  w-[70px] justify-end ">
-                        <p className="text-sm ">{player.points}</p>
+                        <p className="text-base">{player.points}</p>
                       </div>
 
                       <div className="order-5 flex w-[66px] justify-end ">
-                        <p>{player.totReb}</p>
+                        <p className="text-base">{player.totReb}</p>
                       </div>
 
                       <div className="order-6 flex w-[60px] justify-end ">
-                        <p>{player.assists}</p>
+                        <p className="text-base">{player.assists}</p>
                       </div>
 
                       <div className="order-7 flex w-16 justify-end">
-                        <p>{player.steals}</p>
+                        <p className="text-base">{player.steals}</p>
                       </div>
 
                       <div className="order-8 flex w-16 justify-end">
-                        <p>{player.blocks}</p>
+                        <p className="text-base">{player.blocks}</p>
                       </div>
                       <div className="order-9 flex w-16 justify-end text-blue-500 ">
-                        <p>{player.fgm}</p>
+                        <p className="text-base">{player.fgm}</p>
                       </div>
                       <div className="order-10 flex w-[70px] justify-end text-blue-500 ">
-                        <p>{player.fga}</p>
+                        <p className="text-base">{player.fga}</p>
                       </div>
                       <div className="order-11 flex w-[85px] justify-end">
                         <p
                           className={
                             player.fgp > 47.5
-                              ? "text-green-600"
-                              : "text-red-600"
+                              ? "text-green-600 text-base"
+                              : "text-red-600 text-base"
                           }
                         >
                           {shortenPercentage(player.fgp)}
                         </p>
                       </div>
-                      <div className="order-12 flex w-14 justify-end text-blue-500">
-                        <p>{player.tpm}</p>
+                      <div className="order-12 flex w-[58px] justify-end text-blue-500">
+                        <p className="text-base">{player.tpm}</p>
                       </div>
                     </div>
                     <div className="order-2 flex flex-row  border-b border-gray-300 py-2 place-items-center">
-                      <div className="flex w-16 justify-end text-blue-500">
-                        <p>{player.tpa}</p>
+                      <div className="flex w-[62px] justify-end text-blue-500">
+                        <p className="text-base">{player.tpa}</p>
                       </div>
                       <div className="flex w-[70px] justify-end">
                         <p
                           className={
                             player.tpp > 36.1
-                              ? "text-green-600"
-                              : "text-red-600"
+                              ? "text-green-600 text-base"
+                              : "text-red-600 text-base"
                           }
                         >
                           {shortenPercentage(player.tpp)}
                         </p>
                       </div>
-                      <div className="flex w-[54px] justify-end text-blue-500">
-                        <p>{player.ftm}</p>
+                      <div className="flex w-[56px] justify-end text-blue-500">
+                        <p className="text-base">{player.ftm}</p>
                       </div>
-                      <div className="flex w-16 justify-end text-blue-500">
-                        <p>{player.fta}</p>
+                      <div className="flex w-[62px] justify-end text-blue-500">
+                        <p className="text-base">{player.fta}</p>
                       </div>
-                      <div className="flex w-[70px] justify-end">
+                      <div className="flex w-[72px] justify-end">
                         <p
                           className={
                             player.ftp > 78.2
-                              ? "text-green-600"
-                              : "text-red-600"
+                              ? "text-green-600 text-base"
+                              : "text-red-600 text-base"
                           }
                         >
                           {shortenPercentage(player.ftp)}
                         </p>
                       </div>
                       <div className="flex w-[60px] justify-end">
-                        <p>{player.turnovers}</p>
+                        <p className="text-base">{player.turnovers}</p>
                       </div>
                       <div className="flex w-14 justify-end">
-                        <p>{player.pFouls}</p>
+                        <p className="text-base">{player.pFouls}</p>
                       </div>
                       <div className="flex w-24 pl-4 justify-center">
                         <p
                           className={
                             player.plusMinus.includes("+")
-                              ? "text-green-600"
-                              : "text-red-600"
+                              ? "text-green-600 text-base"
+                              : "text-red-600 text-base"
                           }
                         >
                           {player.plusMinus}

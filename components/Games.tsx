@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import TopPlayers from "./PlayerStatsByGame";
 import BoxScore from "./BoxScore";
+import TeamRecord from "./TeamRecord";
 
 interface Team {
   logo: string;
@@ -74,7 +75,7 @@ const Games: React.FC = () => {
         data.response.map((game: any, index: number) => (
           <div key={index} className="relative">
             <div className=" w-[500px] ">
-              <div className="flex flex-col py-1 pr-2  ">
+              <div className="flex flex-col py-1  pr-2 ">
                 <div className="flex flex-row justify-between order-1  rounded-lg p-2 h-40 bg-white overflow-y-clip">
                   <div className="flex flex-row order-1">
                     <div className="flex order-1 pt-2 pl-4 flex-col items-center ">
@@ -91,12 +92,12 @@ const Games: React.FC = () => {
                         />
                       </div>
                       <div className="order-2 pt-2">
-                        <h1 className=" ">
+                        <h1 className="text-lg">
                           {shortenNames(game.teams.home.nickname)}
                         </h1>
                       </div>
                       <div className="order-3">
-                        <p className="text-xs">32-37</p>
+                        <TeamRecord teamID={game.teams.home.id} />
                       </div>
                     </div>
                     <p className=" order-2 pl-8 pt-4 text-3xl font-bold ">
@@ -109,7 +110,7 @@ const Games: React.FC = () => {
                       <h2>
                         {game.status?.halftime ? "Halftime" : game.status?.long}
                       </h2>
-                      <p>
+                      <p className="text-base">
                         Q{game.periods?.current} - {game.status?.clock}
                       </p>
                     </div>
@@ -148,12 +149,12 @@ const Games: React.FC = () => {
                         />
                       </div>
                       <div className="order-2 pt-2 ">
-                        <h1 className=" ">
+                        <h1 className="text-lg ">
                           {shortenNames(game.teams.visitors.nickname)}
                         </h1>
                       </div>
                       <div className="order-3">
-                        <p className="text-xs">32-37</p>
+                        <TeamRecord teamID={game.teams.visitors.id} />
                       </div>
                     </div>
                     <p className=" order-1 pr-8 pt-4 text-3xl font-bold ">
@@ -177,10 +178,32 @@ const Games: React.FC = () => {
           </div>
         ))
       ) : (
-        <span>No games on today!</span>
+        <span></span>
       )}
 
-      <div>{isLoading ? <span>Loading...</span> : <div> </div>}</div>
+      <div className="flex justify-center">
+        {isLoading ? (
+          <div className="flex flex-col py-1 pr-2 w-[500px]">
+            <div className="rounded-lg p-2 h-40 bg-white overflow-y-clip">
+              {" "}
+            </div>
+            <div className="rounded-lg p-2 mt-2 h-40 bg-white overflow-y-clip">
+              {" "}
+            </div>
+            <div className="rounded-lg p-2 mt-2 h-40 bg-white overflow-y-clip">
+              {" "}
+            </div>
+            <div className="rounded-lg p-2 mt-2 h-40 bg-white overflow-y-clip">
+              {" "}
+            </div>
+            <div className="rounded-lg p-2 mt-2 h-40 bg-white overflow-y-clip">
+              {" "}
+            </div>
+          </div>
+        ) : (
+          <div> </div>
+        )}
+      </div>
       <div>{error ? <span>Error...</span> : <div> </div>}</div>
     </div>
   );
