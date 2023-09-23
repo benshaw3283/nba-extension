@@ -1,10 +1,8 @@
-import defaultPic from "../public/darius_days.png";
-
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const ImageWithFallback = ({
-  fallbackImage = defaultPic,
+  fallbackImage = "/darius_days.png",
   alt,
   src,
   ...props

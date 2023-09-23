@@ -29,8 +29,6 @@ const TeamRecord = (props: any) => {
     team = [...data.response];
   }
 
-  console.log(team);
-
   return (
     <div>
       <p className="text-xs text-gray-500">

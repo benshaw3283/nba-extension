@@ -5,5 +5,9 @@
   "action": {
     "default_title": "NBA Daily",
     "default_popup": "index.html"
+  },
+  "icons": {
+    "128": "/128.png",
+    "48": "/48.png"
   }
 }

@@ -389,7 +389,7 @@ const TopPlayers = (props: any) => {
           <div>...</div>
         )
       ) : (
-        <div>fetching data...</div>
+        <div></div>
       )}
     </div>
   );

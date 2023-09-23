@@ -69,13 +69,40 @@ const Games: React.FC = () => {
     queryFn: fetchGames,
   });
 
+  const getLocalTime = (utcTime: string) => {
+    const utc = new Date(utcTime);
+    const offset = utc.getTimezoneOffset();
+    const local = new Date(utc.getTime() + offset * 60000).toISOString();
+    const noDate = local.slice(11, local.length - 8);
+    let first2 = noDate.slice(0, 2);
+    let last2 = noDate.slice(noDate.length - 2, noDate.length);
+    if (first2 === "13") first2 = "1";
+    if (first2 === "14") first2 = "2";
+    if (first2 === "15") first2 = "3";
+    if (first2 === "16") first2 = "4";
+    if (first2 === "17") first2 = "5";
+    if (first2 === "18") first2 = "6";
+    if (first2 === "19") first2 = "7";
+    if (first2 === "20") first2 = "8";
+    if (first2 === "21") first2 = "9";
+    if (first2 === "22") first2 = "10";
+    if (first2 === "23") first2 = "11";
+    if (first2 === "00") first2 = "12";
+    let fullLocal;
+    first2.charAt(0) === "0"
+      ? (fullLocal = `${first2}:${last2}AM`)
+      : (fullLocal = `${first2}:${last2}PM`);
+
+    return fullLocal;
+  };
+
   return (
     <div className="">
       {data ? (
         data.response.map((game: any, index: number) => (
           <div key={index} className="relative">
             <div className=" w-[500px] ">
-              <div className="flex flex-col py-1  pr-2 ">
+              <div className="flex flex-col py-1 pl-1 pr-2 ">
                 <div className="flex flex-row justify-between order-1  rounded-lg p-2 h-40 bg-white overflow-y-clip">
                   <div className="flex flex-row order-1">
                     <div className="flex order-1 pt-2 pl-4 flex-col items-center ">
@@ -100,40 +127,66 @@ const Games: React.FC = () => {
                         <TeamRecord teamID={game.teams.home.id} />
                       </div>
                     </div>
-                    <p className=" order-2 pl-8 pt-4 text-3xl font-bold ">
-                      {game.scores.home.points}
+                    <p
+                      className={
+                        game.stage === 0
+                          ? "order-2 pl-8 pt-4 text-3xl font-bold invisible"
+                          : "order-2 pl-8 pt-4 text-3xl font-bold"
+                      }
+                    >
+                      {game.scores?.home.points}
                     </p>
                   </div>
-
-                  <div className="order-2 flex flex-col items-center font-semibold ">
-                    <div className="order-1">
-                      <h2>
-                        {game.status?.halftime ? "Halftime" : game.status?.long}
-                      </h2>
-                      <p className="text-base">
-                        Q{game.periods?.current} - {game.status?.clock}
+                  {game.stage === 0 ? (
+                    <div className="order-2 flex flex-col items-center justify-center">
+                      <p className="text-base text-gray-700">
+                        Game starting at
+                      </p>
+                      <p className="font-semibold">
+                        {getLocalTime(game.date.start)}
                       </p>
                     </div>
+                  ) : (
+                    <div className="order-2 flex flex-col items-center font-semibold ">
+                      <div className="order-1">
+                        <h2 className="flex justify-center">
+                          {game.status?.halftime
+                            ? "Halftime"
+                            : game.status?.long ||
+                              game.status?.long === "Finished"
+                            ? "Final"
+                            : game.status?.long}
+                        </h2>
+                        <p
+                          className={
+                            game.status?.long === "Finished"
+                              ? "text-lg invisible"
+                              : "text-lg"
+                          }
+                        >
+                          Q{game.periods?.current} - {game.status?.clock}
+                        </p>
+                      </div>
 
-                    <div className=" absolute top-24  flex-col">
-                      <div className="flex order-1  border-slate-400">
-                        <TopPlayers
-                          gameID={game.id}
-                          homeTeamID={game.teams.home.id}
-                          visitorsTeamID={game.teams.visitors.id}
-                        />
+                      <div className=" absolute top-24  flex-col">
+                        <div className="flex order-1  border-slate-400">
+                          <TopPlayers
+                            gameID={game.id}
+                            homeTeamID={game.teams.home.id}
+                            visitorsTeamID={game.teams.visitors.id}
+                          />
+                        </div>
+                      </div>
+                      <div className="relative top-32 right-52 ">
+                        <p
+                          className="text-xs font-mono font-extralight cursor-pointer text-gray-500"
+                          onClick={() => handleBox(index)}
+                        >
+                          Box Score
+                        </p>
                       </div>
                     </div>
-                    <div className="relative top-32 right-52 ">
-                      <p
-                        className="text-xs font-mono font-extralight cursor-pointer text-gray-500"
-                        onClick={() => handleBox(index)}
-                      >
-                        Box Score
-                      </p>
-                    </div>
-                  </div>
-
+                  )}
                   <div className="flex flex-row order-3">
                     <div className="flex order-2 pt-2 pr-4 flex-col items-center">
                       <div className="order-1">
@@ -157,7 +210,13 @@ const Games: React.FC = () => {
                         <TeamRecord teamID={game.teams.visitors.id} />
                       </div>
                     </div>
-                    <p className=" order-1 pr-8 pt-4 text-3xl font-bold ">
+                    <p
+                      className={
+                        game.stage === 0
+                          ? "order-1 pr-8 pt-4 text-3xl font-bold invisible"
+                          : "order-1 pr-8 pt-4 text-3xl font-bold"
+                      }
+                    >
                       {game.scores.visitors.points}
                     </p>
                   </div>
@@ -178,12 +237,14 @@ const Games: React.FC = () => {
           </div>
         ))
       ) : (
-        <span></span>
+        <div>
+          <p>{`No games on today! :(`}</p>
+        </div>
       )}
 
       <div className="flex justify-center">
         {isLoading ? (
-          <div className="flex flex-col py-1 pr-2 w-[500px]">
+          <div className="flex flex-col py-1 pl-1 pr-2 w-[500px]">
             <div className="rounded-lg p-2 h-40 bg-white overflow-y-clip">
               {" "}
             </div>
