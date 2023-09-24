@@ -139,17 +139,15 @@ const Games: React.FC = () => {
                   </div>
                   {game.stage === 0 ? (
                     <div className="order-2 flex flex-col items-center justify-center">
-                      <p className="text-base text-gray-700">
-                        Game starting at
-                      </p>
-                      <p className="font-semibold">
+                      <p className="text-lg text-gray-700">Game starting at</p>
+                      <p className="font-semibold text-lg">
                         {getLocalTime(game.date.start)}
                       </p>
                     </div>
                   ) : (
                     <div className="order-2 flex flex-col items-center font-semibold ">
                       <div className="order-1">
-                        <h2 className="flex justify-center">
+                        <h2 className="flex justify-center text-lg">
                           {game.status?.halftime
                             ? "Halftime"
                             : game.status?.long ||
