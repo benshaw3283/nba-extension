@@ -305,7 +305,7 @@ const BoxScore = (props: Props) => {
                 Below league average
               </p>
             </div>
-            <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1350px] text-lg">
+            <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1352px] text-lg">
               <p className="ml-4">PLAYER</p>
               <p className="pl-[156px]">MIN</p>
               <p className="pl-[38px]">PTS</p>
