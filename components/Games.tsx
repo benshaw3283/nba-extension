@@ -97,13 +97,13 @@ const Games: React.FC = () => {
   };
 
   return (
-    <div className="">
+    <div className="h-[500px] overflow-scroll overflow-x-hidden">
       {data ? (
         data.response.map((game: any, index: number) => (
           <div key={index} className="relative">
-            <div className=" w-[500px] ">
+            <div className=" w-[500px]">
               <div className="flex flex-col py-1 pl-1 pr-2 ">
-                <div className="flex flex-row justify-between order-1  rounded-lg p-2 h-40 bg-white overflow-y-clip">
+                <div className="flex flex-row justify-between order-1  rounded-lg p-2 h-40 bg-white ">
                   <div className="flex flex-row order-1">
                     <div className="flex order-1 pt-2 pl-4 flex-col items-center ">
                       <div className="order-1">

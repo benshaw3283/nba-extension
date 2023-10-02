@@ -142,24 +142,24 @@ const BoxScore = (props: Props) => {
                 Below league average
               </p>
             </div>
-            <div className="flex flex-row py-2  pb-6 border-b-2 font-thin w-[1352px] text-lg">
+            <div className="flex flex-row py-2  pb-6 border-b-2 font-thin w-[1378px] text-lg">
               <p className="ml-4">PLAYER</p>
-              <p className="pl-[156px]">MIN</p>
+              <p className="pl-[176px]">MIN</p>
               <p className="pl-[38px]">PTS</p>
               <p className="pl-8">REB</p>
               <p className="pl-7">AST</p>
               <p className="pl-7">STL</p>
               <p className="pl-7">BLK</p>
               <p className="pl-8 ">FGM</p>
-              <p className="pl-8">FGA</p>
+              <p className="pl-7">FGA</p>
               <p className="pl-9">FG%</p>
-              <p className="pl-7">3PM</p>
+              <p className="pl-8">3PM</p>
               <p className="pl-7">3PA</p>
               <p className="pl-8">3P%</p>
               <p className="pl-7">FTM</p>
               <p className="pl-7">FTA</p>
               <p className="pl-9">FT%</p>
-              <p className="pl-8">TO</p>
+              <p className="pl-9">TO</p>
               <p className="pl-9">PF</p>
               <p className="pl-11">+-</p>
             </div>
@@ -179,17 +179,17 @@ const BoxScore = (props: Props) => {
                       {player.player.firstname.length +
                         player.player.lastname.length >=
                       17 ? (
-                        <div className="text-xs  flex order-1 w-40 font-semibold place-items-center">
+                        <div className="text-xs  flex order-1 w-[190px] font-semibold place-items-center">
                           <p className="pr-1 pl-1">{player.player.firstname}</p>
                           <p>{player.player.lastname}</p>
                         </div>
                       ) : (
-                        <div className="text-sm  flex order-1 w-40 font-semibold place-items-center">
+                        <div className="text-sm  flex order-1 w-[190px] font-semibold place-items-center">
                           <p className="pr-1 pl-2">{player.player.firstname}</p>
                           <p>{player.player.lastname}</p>
                         </div>
                       )}
-                      <div className="order-2  w-10"></div>
+                      <div className="order-2  w-8"></div>
 
                       <div className="flex order-3   w-5 justify-center font-serif">
                         <p className="text-base ">{player.min}</p>
@@ -305,24 +305,24 @@ const BoxScore = (props: Props) => {
                 Below league average
               </p>
             </div>
-            <div className="flex flex-row p-2 pl-3 pb-6 border-b-2 font-thin w-[1352px] text-lg">
+            <div className="flex flex-row py-2  pb-6 border-b-2 font-thin w-[1378px] text-lg">
               <p className="ml-4">PLAYER</p>
-              <p className="pl-[156px]">MIN</p>
+              <p className="pl-[176px]">MIN</p>
               <p className="pl-[38px]">PTS</p>
               <p className="pl-8">REB</p>
               <p className="pl-7">AST</p>
               <p className="pl-7">STL</p>
               <p className="pl-7">BLK</p>
               <p className="pl-8 ">FGM</p>
-              <p className="pl-8">FGA</p>
+              <p className="pl-7">FGA</p>
               <p className="pl-9">FG%</p>
-              <p className="pl-7">3PM</p>
+              <p className="pl-8">3PM</p>
               <p className="pl-7">3PA</p>
               <p className="pl-8">3P%</p>
               <p className="pl-7">FTM</p>
               <p className="pl-7">FTA</p>
               <p className="pl-9">FT%</p>
-              <p className="pl-8">TO</p>
+              <p className="pl-9">TO</p>
               <p className="pl-9">PF</p>
               <p className="pl-11">+-</p>
             </div>
@@ -342,17 +342,17 @@ const BoxScore = (props: Props) => {
                       {player.player.firstname.length +
                         player.player.lastname.length >=
                       17 ? (
-                        <div className="text-xs  flex order-1 w-40 font-semibold place-items-center">
+                        <div className="text-xs  flex order-1 w-[190px] font-semibold place-items-center">
                           <p className="pr-1 pl-1">{player.player.firstname}</p>
                           <p>{player.player.lastname}</p>
                         </div>
                       ) : (
-                        <div className="text-sm  flex order-1 w-40 font-semibold place-items-center">
+                        <div className="text-sm  flex order-1 w-[190px] font-semibold place-items-center">
                           <p className="pr-1 pl-2">{player.player.firstname}</p>
                           <p>{player.player.lastname}</p>
                         </div>
                       )}
-                      <div className="order-2  w-10"></div>
+                      <div className="order-2  w-8"></div>
 
                       <div className="flex order-3   w-5 justify-center font-serif">
                         <p className="text-base ">{player.min}</p>
