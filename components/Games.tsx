@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import TopPlayers from "./PlayerStatsByGame";
 import BoxScore from "./BoxScore";
 import TeamRecord from "./TeamRecord";
+import { DateTime } from "luxon";
 
 interface Team {
   logo: string;
@@ -69,32 +70,13 @@ const Games: React.FC = () => {
     queryFn: fetchGames,
   });
 
-  const getLocalTime = (utcTime: string) => {
-    const utc = new Date(utcTime);
-    const offset = utc.getTimezoneOffset();
-    const local = new Date(utc.getTime() + offset * 60000).toISOString();
-    const noDate = local.slice(11, local.length - 8);
-    let first2 = noDate.slice(0, 2);
-    let last2 = noDate.slice(noDate.length - 2, noDate.length);
-    if (first2 === "13") first2 = "1";
-    if (first2 === "14") first2 = "2";
-    if (first2 === "15") first2 = "3";
-    if (first2 === "16") first2 = "4";
-    if (first2 === "17") first2 = "5";
-    if (first2 === "18") first2 = "6";
-    if (first2 === "19") first2 = "7";
-    if (first2 === "20") first2 = "8";
-    if (first2 === "21") first2 = "9";
-    if (first2 === "22") first2 = "10";
-    if (first2 === "23") first2 = "11";
-    if (first2 === "00") first2 = "12";
-    let fullLocal;
-    first2.charAt(0) === "0"
-      ? (fullLocal = `${first2}:${last2}AM`)
-      : (fullLocal = `${first2}:${last2}PM`);
-
-    return fullLocal;
-  };
+  function convertETToLocalTime(etTime: string) {
+    const etDateTime = DateTime.fromISO(etTime, { zone: "America/New_York" });
+    const userTimeZone = DateTime.local().zoneName;
+    const localTime = etDateTime.setZone(userTimeZone);
+    const localTimeString = localTime.toFormat("hh:mm a");
+    return localTimeString;
+  }
 
   return (
     <div className="h-[500px] overflow-scroll overflow-x-hidden">
@@ -146,7 +128,7 @@ const Games: React.FC = () => {
                     <div className="order-2 flex flex-col items-center justify-center">
                       <p className="text-lg text-gray-700">Game starting at</p>
                       <p className="font-semibold text-lg">
-                        {getLocalTime(game.date.start)}
+                        {convertETToLocalTime(game.date.start)}
                       </p>
                     </div>
                   ) : (

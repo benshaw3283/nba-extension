@@ -128,8 +128,8 @@ const BoxScore = (props: Props) => {
         <div> </div>
       ) : (
         <div>
-          <div className="w-full bg-white overflow-x-scroll container border-y-2 rounded-lg">
-            <div className="py-4 px-2  flex flex-row w-[1350px]">
+          <div className="w-full bg-white overflow-x-auto container border-y-2 rounded-lg">
+            <div className="py-4 px-2  flex flex-row w-[1378px]">
               <h1 className="text-xl font-bold">{homeName}</h1>
               <div className="w-12"> </div>
               <div className="flex w-3 h-2 bg-green-600 place-self-center "></div>
@@ -142,26 +142,66 @@ const BoxScore = (props: Props) => {
                 Below league average
               </p>
             </div>
-            <div className="flex flex-row py-2  pb-6 border-b-2 font-thin w-[1378px] text-lg">
-              <p className="ml-4">PLAYER</p>
-              <p className="pl-[176px]">MIN</p>
-              <p className="pl-[38px]">PTS</p>
-              <p className="pl-8">REB</p>
-              <p className="pl-7">AST</p>
-              <p className="pl-7">STL</p>
-              <p className="pl-7">BLK</p>
-              <p className="pl-8 ">FGM</p>
-              <p className="pl-7">FGA</p>
-              <p className="pl-9">FG%</p>
-              <p className="pl-8">3PM</p>
-              <p className="pl-7">3PA</p>
-              <p className="pl-8">3P%</p>
-              <p className="pl-7">FTM</p>
-              <p className="pl-7">FTA</p>
-              <p className="pl-9">FT%</p>
-              <p className="pl-9">TO</p>
-              <p className="pl-9">PF</p>
-              <p className="pl-11">+-</p>
+            <div className="flex flex-row py-2  pb-6 border-b-2 font-thin w-[1378px] text-lg ">
+              <div className="w-4 flex"> </div>
+              <div className="w-[174px] justify-start flex">
+                <p>PLAYER</p>
+              </div>
+              <div className="w-[68px] flex "> </div>
+              <div className="w-[24px] justify-end flex">
+                <p>MIN</p>
+              </div>
+              <div className="w-[64px] justify-end flex">
+                <p>PTS</p>
+              </div>
+              <div className="w-[68px] justify-end flex">
+                <p>REB</p>
+              </div>
+              <div className="w-[58px] justify-end flex">
+                <p>AST</p>
+              </div>
+              <div className="w-[58px] justify-end flex">
+                <p>STL</p>
+              </div>
+              <div className="w-[60px] justify-end flex">
+                <p>BLK</p>
+              </div>
+              <div className="w-[64px] justify-end flex">
+                <p>FGM</p>
+              </div>
+              <div className="w-[62px] justify-end flex">
+                <p>FGA</p>
+              </div>
+              <div className="w-[74px] justify-end flex">
+                <p>FG%</p>
+              </div>
+              <div className="w-[62px] justify-end flex">
+                <p>3PM</p>
+              </div>
+              <div className="w-[60px] justify-end flex">
+                <p>3PA</p>
+              </div>
+              <div className="w-[64px] justify-end flex">
+                <p>3P%</p>
+              </div>
+              <div className="w-[66px] justify-end flex">
+                <p>FTM</p>
+              </div>
+              <div className="w-[58px] justify-end flex">
+                <p>FTA</p>
+              </div>
+              <div className="w-[72px] justify-end flex">
+                <p>FT%</p>
+              </div>
+              <div className="w-[60px] justify-end flex">
+                <p>TO</p>
+              </div>
+              <div className="w-[54px] justify-end flex">
+                <p>PF</p>
+              </div>
+              <div className="w-[62px] justify-end flex">
+                <p>+-</p>
+              </div>
             </div>
             {homePlayers.map((player: any, index: number) => (
               <div key={index}>
@@ -305,26 +345,66 @@ const BoxScore = (props: Props) => {
                 Below league average
               </p>
             </div>
-            <div className="flex flex-row py-2  pb-6 border-b-2 font-thin w-[1378px] text-lg">
-              <p className="ml-4">PLAYER</p>
-              <p className="pl-[176px]">MIN</p>
-              <p className="pl-[38px]">PTS</p>
-              <p className="pl-8">REB</p>
-              <p className="pl-7">AST</p>
-              <p className="pl-7">STL</p>
-              <p className="pl-7">BLK</p>
-              <p className="pl-8 ">FGM</p>
-              <p className="pl-7">FGA</p>
-              <p className="pl-9">FG%</p>
-              <p className="pl-8">3PM</p>
-              <p className="pl-7">3PA</p>
-              <p className="pl-8">3P%</p>
-              <p className="pl-7">FTM</p>
-              <p className="pl-7">FTA</p>
-              <p className="pl-9">FT%</p>
-              <p className="pl-9">TO</p>
-              <p className="pl-9">PF</p>
-              <p className="pl-11">+-</p>
+            <div className="flex flex-row py-2  pb-6 border-b-2 font-thin w-[1378px] text-lg ">
+              <div className="w-4 flex"> </div>
+              <div className="w-[174px] justify-start flex">
+                <p>PLAYER</p>
+              </div>
+              <div className="w-[68px] flex "> </div>
+              <div className="w-[24px] justify-end flex">
+                <p>MIN</p>
+              </div>
+              <div className="w-[64px] justify-end flex">
+                <p>PTS</p>
+              </div>
+              <div className="w-[68px] justify-end flex">
+                <p>REB</p>
+              </div>
+              <div className="w-[58px] justify-end flex">
+                <p>AST</p>
+              </div>
+              <div className="w-[58px] justify-end flex">
+                <p>STL</p>
+              </div>
+              <div className="w-[60px] justify-end flex">
+                <p>BLK</p>
+              </div>
+              <div className="w-[64px] justify-end flex">
+                <p>FGM</p>
+              </div>
+              <div className="w-[62px] justify-end flex">
+                <p>FGA</p>
+              </div>
+              <div className="w-[74px] justify-end flex">
+                <p>FG%</p>
+              </div>
+              <div className="w-[62px] justify-end flex">
+                <p>3PM</p>
+              </div>
+              <div className="w-[60px] justify-end flex">
+                <p>3PA</p>
+              </div>
+              <div className="w-[64px] justify-end flex">
+                <p>3P%</p>
+              </div>
+              <div className="w-[66px] justify-end flex">
+                <p>FTM</p>
+              </div>
+              <div className="w-[58px] justify-end flex">
+                <p>FTA</p>
+              </div>
+              <div className="w-[72px] justify-end flex">
+                <p>FT%</p>
+              </div>
+              <div className="w-[60px] justify-end flex">
+                <p>TO</p>
+              </div>
+              <div className="w-[54px] justify-end flex">
+                <p>PF</p>
+              </div>
+              <div className="w-[62px] justify-end flex">
+                <p>+-</p>
+              </div>
             </div>
             {visitorsPlayers.map((player: any, index: number) => (
               <div key={index}>
