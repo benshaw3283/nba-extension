@@ -11,7 +11,7 @@ const options: RequestInit = {
 const TeamRecord = (props: any) => {
   const fetchTeamRecord = async () => {
     const response = await fetch(
-      `https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=2022&team=${props.teamID}`,
+      `https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=2023&team=${props.teamID}`,
       options
     );
     const result = await response.json();

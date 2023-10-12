@@ -373,7 +373,7 @@ const TopPlayers = (props: any) => {
                     : ""
                 }
               >
-                <Image
+                <ImageWithFallback
                   src={matchPlayerPic(
                     `/${topTwoPlayers[1].player.firstname}_${topTwoPlayers[1].player.lastname}.png`
                   )}

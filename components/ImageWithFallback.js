@@ -21,6 +21,7 @@ const ImageWithFallback = ({
       {...props}
       width={props.width}
       height={props.height}
+      loading="lazy"
     />
   );
 };

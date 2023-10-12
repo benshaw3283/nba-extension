@@ -41,7 +41,7 @@ const options: RequestInit = {
 
 const fetchGames = async (): Promise<{ response: Game[] }> => {
   const response = await fetch(
-    `https://api-nba-v1.p.rapidapi.com/games?date=2023-01-03`,
+    `https://api-nba-v1.p.rapidapi.com/games?date=${todaysDate}`,
     options
   );
   const result = await response.json();
@@ -113,7 +113,12 @@ const Games: React.FC = () => {
                               ? "/pistons.png"
                               : game.teams.home.logo
                           }
-                          width={50}
+                          width={
+                            game.teams.home.nickname === "Cavaliers" ||
+                            game.teams.home.nickname === "Nets"
+                              ? 35
+                              : 50
+                          }
                           height={50}
                           alt="home_logo"
                         />
@@ -129,7 +134,7 @@ const Games: React.FC = () => {
                     </div>
                     <p
                       className={
-                        game.stage === 0
+                        game.periods.current === 0
                           ? "order-2 pl-8 pt-4 text-3xl font-bold invisible"
                           : "order-2 pl-8 pt-4 text-3xl font-bold"
                       }
@@ -137,7 +142,7 @@ const Games: React.FC = () => {
                       {game.scores?.home.points}
                     </p>
                   </div>
-                  {game.stage === 0 ? (
+                  {game.periods.current === 0 ? (
                     <div className="order-2 flex flex-col items-center justify-center">
                       <p className="text-lg text-gray-700">Game starting at</p>
                       <p className="font-semibold text-lg">
@@ -157,7 +162,8 @@ const Games: React.FC = () => {
                         </h2>
                         <p
                           className={
-                            game.status?.long === "Finished"
+                            game.status?.long === "Finished" ||
+                            game.status?.halftime
                               ? "text-lg invisible"
                               : "text-lg"
                           }
@@ -194,7 +200,12 @@ const Games: React.FC = () => {
                               ? "/pistons.png"
                               : game.teams.visitors.logo
                           }
-                          width={50}
+                          width={
+                            game.teams.visitors.nickname === "Cavaliers" ||
+                            game.teams.visitors.nickname === "Nets"
+                              ? 35
+                              : 50
+                          }
                           height={50}
                           alt="visitors_logo"
                         />
