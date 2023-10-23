@@ -31,7 +31,10 @@ interface Game {
 }
 
 const key = process.env.NBA_API_KEY;
-const todaysDate = new Date().toISOString().slice(0, 10);
+const currentET = DateTime.now()
+  .setZone("America/New_York")
+  .toFormat("yyyy-MM-dd");
+
 const options: RequestInit = {
   method: "GET",
   headers: {
@@ -42,7 +45,7 @@ const options: RequestInit = {
 
 const fetchGames = async (): Promise<{ response: Game[] }> => {
   const response = await fetch(
-    `https://api-nba-v1.p.rapidapi.com/games?date=${todaysDate}`,
+    `https://api-nba-v1.p.rapidapi.com/games?date=2023-10-20`,
     options
   );
   const result = await response.json();
@@ -72,8 +75,11 @@ const Games: React.FC = () => {
 
   function convertETToLocalTime(etTime: string) {
     const etDateTime = DateTime.fromISO(etTime, { zone: "America/New_York" });
-    const userTimeZone = DateTime.local().zoneName;
-    const localTime = etDateTime.setZone(userTimeZone);
+    let userTimeZone = DateTime.local().zoneName;
+    if (userTimeZone === null) {
+      userTimeZone = "UTC";
+    }
+    const localTime: any = etDateTime?.setZone(userTimeZone);
     const localTimeString = localTime.toFormat("hh:mm a");
     return localTimeString;
   }
@@ -133,25 +139,50 @@ const Games: React.FC = () => {
                     </div>
                   ) : (
                     <div className="order-2 flex flex-col items-center font-semibold ">
-                      <div className="order-1">
-                        <h2 className="flex justify-center text-lg">
-                          {game.status?.halftime
-                            ? "Halftime"
-                            : game.status?.long ||
-                              game.status?.long === "Finished"
-                            ? "Final"
-                            : game.status?.long}
-                        </h2>
-                        <p
+                      <div className="order-1 flex-col">
+                        <div
                           className={
-                            game.status?.long === "Finished" ||
-                            game.status?.halftime
-                              ? "text-lg invisible"
-                              : "text-lg"
+                            game.status?.halftime ||
+                            game.status?.long === "Finished"
+                              ? "flex order-1 visible"
+                              : "flex order-2 invisible"
                           }
                         >
-                          Q{game.periods?.current} - {game.status?.clock}
-                        </p>
+                          <h2
+                            className={
+                              game.status?.halftime ||
+                              game.status?.long === "Finished"
+                                ? "flex justify-center text-lg"
+                                : "flex justify-center text-lg invisible"
+                            }
+                          >
+                            {game.status?.halftime
+                              ? "Halftime"
+                              : game.status?.long ||
+                                game.status?.long === "Finished"
+                              ? "Final"
+                              : game.status?.long}
+                          </h2>
+                        </div>
+                        <div
+                          className={
+                            game.status?.halftime ||
+                            game.status?.long === "Finished"
+                              ? "flex order-2 invisible"
+                              : "flex order-1 visible"
+                          }
+                        >
+                          <p
+                            className={
+                              game.status?.long === "Finished" ||
+                              game.status?.halftime
+                                ? "text-lg invisible"
+                                : "text-lg"
+                            }
+                          >
+                            Q{game.periods?.current} - {game.status?.clock}
+                          </p>
+                        </div>
                       </div>
 
                       <div className=" absolute top-24  flex-col">
@@ -229,7 +260,7 @@ const Games: React.FC = () => {
         ))
       ) : (
         <div>
-          <p>{`No games on today! :(`}</p>
+          <p className="pl-36">{`No games on today! :(`}</p>
         </div>
       )}
 

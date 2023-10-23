@@ -21,6 +21,7 @@
   "devDependencies": {
     "@types/chrome": "^0.0.181",
     "@types/firefox-webext-browser": "^94.0.1",
+    "@types/luxon": "^3.3.2",
     "@types/node": "17.0.24",
     "@types/react": "18.0.5",
     "@types/react-dom": "18.0.1",

@@ -161,7 +161,7 @@ const TopPlayers = (props: any) => {
               13 ? (
                 <div className="flex flex-col relative -top-5 ">
                   <div className="order-1 flex w-[110px]">
-                    <p className="text-sm pr-4 font-bold border-b-2">
+                    <p className="text-sm pr-4 font-bold border-b-2 ">
                       {topTwoPlayers[0].player.firstname}{" "}
                       {topTwoPlayers[0].player.lastname}
                     </p>
@@ -262,11 +262,11 @@ const TopPlayers = (props: any) => {
             </div>
             <div className="flex order-2 pr-2 pt-2 ">
               {topTwoPlayers[1].player.firstname.length +
-                topTwoPlayers[1].player.lastname.length >
+                topTwoPlayers[1].player.lastname.length >=
               13 ? (
                 <div className="flex flex-col relative -top-5 ">
                   <div className="order-1 flex w-[110px] border-b-2 ">
-                    <p className="text-sm  pl-7 font-bold">
+                    <p className="text-sm  pl-7 font-bold ">
                       {topTwoPlayers[1].player.firstname}{" "}
                       {topTwoPlayers[1].player.lastname}
                     </p>

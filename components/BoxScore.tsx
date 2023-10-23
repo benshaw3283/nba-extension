@@ -128,7 +128,7 @@ const BoxScore = (props: Props) => {
         <div> </div>
       ) : (
         <div>
-          <div className="w-full bg-white overflow-x-auto container border-y-2 rounded-lg">
+          <div className="w-full bg-white overflow-x-scroll container border-y-2 rounded-lg">
             <div className="py-4 px-2  flex flex-row w-[1378px]">
               <h1 className="text-xl font-bold">{homeName}</h1>
               <div className="w-12"> </div>
@@ -208,14 +208,16 @@ const BoxScore = (props: Props) => {
                 <div className="bg-white w-[1350px] ">
                   <div className="flex flex-row">
                     <div className="flex flex-row border-b border-gray-300 py-2 order-1 place-items-center">
-                      <ImageWithFallback
-                        alt="player_pic"
-                        src={matchPlayerPic(
-                          `/${player.player.firstname}_${player.player.lastname}.png`
-                        )}
-                        width={50}
-                        height={30}
-                      />
+                      <div className="sticky left-0">
+                        <ImageWithFallback
+                          alt="player_pic"
+                          src={matchPlayerPic(
+                            `/${player.player.firstname}_${player.player.lastname}.png`
+                          )}
+                          width={50}
+                          height={30}
+                        />
+                      </div>
                       {player.player.firstname.length +
                         player.player.lastname.length >=
                       17 ? (
@@ -411,14 +413,16 @@ const BoxScore = (props: Props) => {
                 <div className="bg-white w-[1350px] ">
                   <div className="flex flex-row">
                     <div className="flex flex-row border-b border-gray-300 py-2 order-1 place-items-center">
-                      <ImageWithFallback
-                        alt="player_pic"
-                        src={matchPlayerPic(
-                          `/${player.player.firstname}_${player.player.lastname}.png`
-                        )}
-                        width={50}
-                        height={30}
-                      />
+                      <div className="sticky left-0">
+                        <ImageWithFallback
+                          alt="player_pic"
+                          src={matchPlayerPic(
+                            `/${player.player.firstname}_${player.player.lastname}.png`
+                          )}
+                          width={50}
+                          height={30}
+                        />
+                      </div>
                       {player.player.firstname.length +
                         player.player.lastname.length >=
                       17 ? (
