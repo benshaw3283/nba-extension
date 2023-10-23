@@ -263,7 +263,10 @@ const TopPlayers = (props: any) => {
             <div className="flex order-2 pr-2 pt-2 ">
               {topTwoPlayers[1].player.firstname.length +
                 topTwoPlayers[1].player.lastname.length >=
-              13 ? (
+                13 &&
+              topTwoPlayers[1].player.firstname.length +
+                topTwoPlayers[1].player.lastname.length <
+                16 ? (
                 <div className="flex flex-col relative -top-5 ">
                   <div className="order-1 flex w-[110px] border-b-2 ">
                     <p className="text-sm  pl-7 font-bold ">
@@ -293,6 +296,14 @@ const TopPlayers = (props: any) => {
                             {topTwoPlayers[1].assists}
                           </p>
                         </div>
+                      ) : topTwoPlayers[1].steals > topTwoPlayers[1].assists &&
+                        topTwoPlayers[1].blocks < topTwoPlayers[1].assists ? (
+                        <div className="order-3 flex flex-col place-items-center pl-1">
+                          <p className="order-1 text-sm pl-1 border-b">stl</p>
+                          <p className="pl-1 order-2 text-sm">
+                            {topTwoPlayers[1].steals}
+                          </p>
+                        </div>
                       ) : (
                         <div className="order-3 flex flex-col place-items-center pl-1">
                           <p className="order-1 text-sm pl-1 border-b">blk</p>
@@ -301,15 +312,57 @@ const TopPlayers = (props: any) => {
                           </p>
                         </div>
                       )}
-                      {topTwoPlayers[1].steals > topTwoPlayers[1].assists &&
-                        topTwoPlayers[1].blocks < topTwoPlayers[1].assists && (
-                          <div className="order-3 flex flex-col place-items-center pl-1">
-                            <p className="order-1 text-sm pl-1 border-b">stl</p>
-                            <p className="pl-1 order-2 text-sm">
-                              {topTwoPlayers[1].steals}
-                            </p>
-                          </div>
-                        )}
+                    </div>
+                  </div>
+                </div>
+              ) : topTwoPlayers[1].player.firstname.length +
+                  topTwoPlayers[1].player.lastname.length >=
+                16 ? (
+                <div className="flex flex-col relative -top-5 ">
+                  <div className="order-1 flex w-[110px] border-b-2 ">
+                    <p className="text-sm  pl-3 font-bold ">
+                      {topTwoPlayers[1].player.firstname}{" "}
+                      {topTwoPlayers[1].player.lastname}
+                    </p>
+                  </div>
+
+                  <div className="order-2 flex">
+                    <div className="flex flex-row pl-7 ">
+                      <div className="order-1 flex flex-col place-items-center ">
+                        <p className="order-1 text-sm pl-1 border-b">pts</p>
+                        <p className="pl-1 order-2 text-sm">
+                          {topTwoPlayers[1].points}
+                        </p>
+                      </div>
+                      <div className="order-2 flex flex-col place-items-center pl-1">
+                        <p className="order-1 text-sm pl-1 border-b">reb</p>
+                        <p className="pl-1 order-2 text-sm">
+                          {topTwoPlayers[1].totReb}
+                        </p>
+                      </div>
+                      {topTwoPlayers[1].assists > topTwoPlayers[1].blocks ? (
+                        <div className="order-3 flex flex-col place-items-center pl-1">
+                          <p className="order-1 text-sm pl-1 border-b">ast</p>
+                          <p className="pl-1 order-2 text-sm">
+                            {topTwoPlayers[1].assists}
+                          </p>
+                        </div>
+                      ) : topTwoPlayers[1].steals > topTwoPlayers[1].assists &&
+                        topTwoPlayers[1].blocks < topTwoPlayers[1].assists ? (
+                        <div className="order-3 flex flex-col place-items-center pl-1">
+                          <p className="order-1 text-sm pl-1 border-b">stl</p>
+                          <p className="pl-1 order-2 text-sm">
+                            {topTwoPlayers[1].steals}
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="order-3 flex flex-col place-items-center pl-1">
+                          <p className="order-1 text-sm pl-1 border-b">blk</p>
+                          <p className="pl-1 order-2 text-sm">
+                            {topTwoPlayers[1].blocks}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

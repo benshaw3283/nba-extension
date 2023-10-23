@@ -45,7 +45,7 @@ const options: RequestInit = {
 
 const fetchGames = async (): Promise<{ response: Game[] }> => {
   const response = await fetch(
-    `https://api-nba-v1.p.rapidapi.com/games?date=2023-10-20`,
+    `https://api-nba-v1.p.rapidapi.com/games?date=${currentET}`,
     options
   );
   const result = await response.json();
