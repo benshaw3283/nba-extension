@@ -32,7 +32,7 @@ interface Game {
 
 const key = process.env.NBA_API_KEY;
 const currentET = DateTime.now()
-  .setZone("America/New_York")
+  .setZone("Australia/Sydney")
   .toFormat("yyyy-MM-dd");
 
 const options: RequestInit = {
