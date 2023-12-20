@@ -62,10 +62,12 @@ const shortenNames = (name: string): string => {
 
 const Games: React.FC = () => {
   const [box, setBox] = useState(-1);
+  const [boxOpen, setBoxOpen] = useState(false);
 
   const handleBox = (index: number) => {
     setBox(index);
     if (box === index) setBox(-1);
+    setBoxOpen(!boxOpen);
   };
 
   const { isLoading, error, data } = useQuery<{ response: Game[] }>({
@@ -112,7 +114,7 @@ const Games: React.FC = () => {
                         />
                       </div>
                       <div className="order-2 pt-2">
-                        <h1 className="text-lg">
+                        <h1 className="text-lg ">
                           {shortenNames(game.teams.home.nickname)}
                         </h1>
                       </div>
@@ -194,7 +196,13 @@ const Games: React.FC = () => {
                           />
                         </div>
                       </div>
-                      <div className="relative top-32 right-52 ">
+                      <div
+                        className={
+                          !boxOpen
+                            ? "absolute left-2 bottom-2 "
+                            : "absolute left-2 top-36 "
+                        }
+                      >
                         <p
                           className="text-xs font-mono font-extralight cursor-pointer text-gray-500"
                           onClick={() => handleBox(index)}

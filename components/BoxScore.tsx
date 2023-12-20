@@ -1,9 +1,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import { useState } from "react";
 import ImageWithFallback from "./ImageWithFallback";
-import { type } from "os";
 
 interface Player {
   player: {
@@ -203,6 +200,7 @@ const BoxScore = (props: Props) => {
                 <p>+-</p>
               </div>
             </div>
+
             {homePlayers.map((player: any, index: number) => (
               <div key={index}>
                 <div className="bg-white w-[1350px] ">
